@@ -1,34 +1,43 @@
 <h1>Game Library</h1>
-<div class="input-group md-form form-sm form-1 pl-0">
-  <div class="input-group-prepend">
-    <span class="input-group-text purple lighten-3" id="basic-text1"><i class="fas fa-search text-white"
-        aria-hidden="true"></i></span>
+<div class="row">
+  <div class="col-md-1">
+    {{#link-to (query-params limit='all' letter='') class='btn btn-default btn-lg btn-block'}}All{{/link-to}}
   </div>
-  <input class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search" id="search" {{action 'filterByGame(this.value)'}}>
+  <div class="col-md-1">
+    {{#link-to (query-params limit='abc') class='btn btn-default btn-lg btn-block'}}Abc{{/link-to}}
+  </div>
+
+  <div class="col-md-10">
+    {{#if limitAll}}
+      <div class="form-group">
+        {{input value=filter class="form-control input-lg" placeholder="Filter by game name"}}
+      </div>
+    {{else}}
+    	{{log "hereeeeeeee"}}
+        <div class="form-group">
+          {{abc-buttons}}
+        </div>
+    {{/if}}
+  </div>
 </div>
 
 <br/>
 
-<table class="table table-bordered table-striped" id="gameTable">
-
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Genre</th>
-      <th>Company</th>
-      <th>Platform</th>
-      <th>Release Date</th>
-    </tr>
-  </thead>
-  <tbody>
-  {{#each model as |game|}}
-    <tr>
-      <th>{{game.name}}</th>
-      <th>{{game.genre}}</th>
-      <th>{{game.company}}</th>
-      <th>{{game.platform}}</th>
-      <th>{{game.released}}</th>
-    </tr>
-  {{/each}}
-  </tbody>
-</table>
+<div class="row">
+	{{#each filteredList as |game|}}
+		<div class="col-md-4">
+	  		{{#game-item game=game}}
+	  		{{/game-item}}
+	  	</div>
+	  	{{else}}
+    	{{#if model.isUpdating}}
+      		{{spinner-cube}}
+    	{{else}}
+      		<div class="col-md-12 text-center">
+        	<div class="alert alert-info">
+          		Sorry, no result.
+        	</div>
+      </div>
+    {{/if}}
+	{{/each}}
+</div>
