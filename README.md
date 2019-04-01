@@ -1,3 +1,9 @@
+# TODO
+- Add genre checkboxes
+- Add platform checkboxes
+- Add date field
+- Add more things to database
+
 # libapp
 
 This README outlines the details of collaborating on this Ember application.
