@@ -18,6 +18,16 @@ export default Route.extend({
 	      startAt: params.letter,
 	      endAt: params.letter+"\uf8ff"
 	    });
+  	},
+
+  	actions:{
+  		deleteGame(game){
+  			let confirmation = confirm('Are you sure?');
+
+  			if(confirmation){
+  				game.destroyRecord();
+  			}
+  		}
   	}
   
 });

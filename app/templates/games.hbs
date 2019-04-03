@@ -27,6 +27,7 @@
 	{{#each filteredList as |game|}}
 		<div class="col-md-4">
 	  		{{#game-item game=game}}
+	  			<button class="btn btn-danger btn-xs" {{action 'deleteGame' game}}>Delete</button>
 	  		{{/game-item}}
 	  	</div>
 	  	{{else}}

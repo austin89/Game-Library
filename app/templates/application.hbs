@@ -16,9 +16,22 @@
         <ul class="nav navbar-nav">
   			{{#link-to 'index' tagName="li"}}<a href="">Home</a>{{/link-to}}
   			{{#link-to 'games' tagName="li"}}<a href="">Library</a>{{/link-to}}
+
 		</ul>
+    <div class="login-container">
+    <form id="loginForm" class="form-inline">
+             {{input type="text" value=username class="form-control" placeholder="Username" autocomplete="off"}}
+             {{input type="password" value=password class="form-control" placeholder="Password" autocomplete="off"}}
+             <button type="submit" class="btn btn-sm" {{action 'login'}}>Login</button>
+             <button type="submit" class="btn btn-sm" {{action 'createProfile'}}>Create</button>
+    </form>
+    <div id="welcome" hidden=true></div>
+  </div>
+
       </div><!-- /.navbar-collapse -->
+
     </div><!-- /.container-fluid -->
+
   </nav>
 
   {{outlet}}

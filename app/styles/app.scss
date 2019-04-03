@@ -8,3 +8,18 @@ body {
   padding-left: 10px;
   padding-right: 10px;
 }
+
+.login-container{
+	padding-top: 12px;
+	float:right;
+}
+
+.btn-sm{
+	border-radius: 12px;
+	padding-bottom: 5px;
+}
+
+.btn-sm:hover{
+	background: #457ab2;
+	color: white;
+}
