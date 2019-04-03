@@ -1,4 +1,8 @@
-import FirebaseAdapter from 'emberfire/adapters/firebase';
+import FirestoreAdapter from 'emberfire/adapters/firebase';
+import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
+import ENV from '../config/environment';
 
-export default FirebaseAdapter.extend({
+export default FirestoreAdapter.extend({
+
+  authenticator: 'authenticator:firebase'
 });

@@ -17,16 +17,18 @@
   			{{#link-to 'index' tagName="li"}}<a href="">Home</a>{{/link-to}}
   			{{#link-to 'games' tagName="li"}}<a href="">Library</a>{{/link-to}}
 
-		</ul>
-    <div class="login-container">
-    <form id="loginForm" class="form-inline">
-             {{input type="text" value=username class="form-control" placeholder="Username" autocomplete="off"}}
-             {{input type="password" value=password class="form-control" placeholder="Password" autocomplete="off"}}
-             <button type="submit" class="btn btn-sm" {{action 'login'}}>Login</button>
-             <button type="submit" class="btn btn-sm" {{action 'createProfile'}}>Create</button>
-    </form>
-    <div id="welcome" hidden=true></div>
-  </div>
+
+      </ul>
+        <div class="login-container">
+          <ul class=" navbar-nav">
+          {{#unless session.isAuthenticated}}
+            {{#link-to 'login' class="btn btn-sm" tagName="li"}}<a href="">Login</a>{{/link-to}}
+            {{#link-to 'sign-up' class="btn btn-sm" tagName="li"}}<a href="">Sign-up</a>{{/link-to}}
+          {{else}}
+            <li><a class="btn btn-sm" href="" {{action "invalidateSession"}}>Logout</a></li>
+          {{/unless}}
+          </ul>
+      </div>
 
       </div><!-- /.navbar-collapse -->
 
