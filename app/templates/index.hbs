@@ -1,6 +1,52 @@
 <!-- app/templates/index.hbs -->
 
 
+<h1>Game Library</h1>
+<div class="row">
+  <div class="col-md-1">
+    {{#link-to (query-params limit='all' letter='') class='btn btn-default btn-lg btn-block'}}All{{/link-to}}
+  </div>
+  <div class="col-md-1">
+    {{#link-to (query-params limit='abc') class='btn btn-default btn-lg btn-block'}}Abc{{/link-to}}
+  </div>
+
+  <div class="col-md-10">
+    {{#if limitAll}}
+      <div class="form-group">
+        {{input value=filter class="form-control input-lg" placeholder="Filter by game name"}}
+      </div>
+    {{else}}
+      {{log "hereeeeeeee"}}
+        <div class="form-group">
+          {{abc-buttons}}
+        </div>
+    {{/if}}
+  </div>
+</div>
+
+<br/>
+
+<div class="row">
+  {{#each filteredList as |game|}}
+    <div class="col-md-4">
+        {{#game-item game=game}}
+          <button class="btn btn-danger btn-xs" {{action 'deleteGame' game}}>Delete</button>
+        {{/game-item}}
+      </div>
+      {{else}}
+      {{#if model.isUpdating}}
+          {{spinner-cube}}
+      {{else}}
+          <div class="col-md-12 text-center">
+          <div class="alert alert-info">
+              Sorry, no result.
+          </div>
+      </div>
+    {{/if}}
+  {{/each}}
+</div>
+
+
 <div class="jumbotron text-center">
    <h1>Add a Game</h1>
 
@@ -8,19 +54,19 @@
 
    <div class="form-horizontal form-group form-group-lg row">
      <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
-       {{input type="text" value=game class="form-control" placeholder="Enter game name" autofocus="autofocus" autocomplete="off"}}
+       {{input type="text" value=game class="form-control" placeholder="Enter game name" autocomplete="off"}}
      </div>
           <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
-       {{input type="text" value=company class="form-control" placeholder="Enter game publisher" autofocus="autofocus" autocomplete="off"}}
+       {{input type="text" value=company class="form-control" placeholder="Enter game publisher" autocomplete="off"}}
      </div>
           <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
-       {{input type="text" value=genre class="form-control" placeholder="Enter game genre" autofocus="autofocus" autocomplete="off"}}
+       {{input type="text" value=genre class="form-control" placeholder="Enter game genre" autocomplete="off"}}
      </div>
           <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
-       {{input type="text" value=platform class="form-control" placeholder="Enter game platform" autofocus="autofocus" autocomplete="off"}}
+       {{input type="text" value=platform class="form-control" placeholder="Enter game platform" autocomplete="off"}}
      </div>
       <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
-       {{input type="text" value=released class="form-control" placeholder="Enter game release date" autofocus="autofocus" autocomplete="off"}}
+       {{input type="text" value=released class="form-control" placeholder="Enter game release date" autocomplete="off"}}
      </div>
      <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-4 col-md-3">
        <button class="btn btn-primary btn-lg btn-block" {{action 'saveInvitation'}}>Add Game</button>

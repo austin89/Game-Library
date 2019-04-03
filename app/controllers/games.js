@@ -10,7 +10,8 @@ export default Controller.extend({
 
 	limitAll: equal('limit', 'all'),
 
-	filteredList: computed('model.@each.name', 'filter', function() {
+	filteredList: computed('model.@each.username', 'filter', function() {
+		console.log("in games controller");
 		let results=this.model;
 		const query = this.filter;
 
@@ -21,8 +22,8 @@ export default Controller.extend({
 	      // i: case insensitive, g: global
 	      const regex = new RegExp(regexString, 'ig');
 
-	      results = results.filter((item) => item.get('name').match(regex));
+	      results = results.filter((item) => item.get('username').match(regex));
 	    }
-	    return results.sortBy('name');
+	    return results.sortBy('username');
 	})
 });
