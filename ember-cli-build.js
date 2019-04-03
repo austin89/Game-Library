@@ -4,9 +4,20 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
-    // Add options here
+    'ember-cli-babel': {
+      babel: {
+        exclude: ['node_modules']
+      }
+      // compileModules: false
+      // loose: true,
+    },
+    'ember-bootstrap': {
+      'bootstrapVersion': 4,
+      'importBootstrapFont': false,
+      'importBootstrapCSS': false
+    }
   });
-
+//app.import('node_modules/firebase/app/auth.js');
   // Use `app.import` to add additional libraries to the generated
   // output files.
   //
