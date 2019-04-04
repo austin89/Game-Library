@@ -6,7 +6,7 @@ export default Controller.extend({
   actions: {
     async authenticate(){
       this.session.authenticate('authenticator:firebase', {
-        username: this.identification,
+        email: this.identification,
         password: this.password
       })
     }

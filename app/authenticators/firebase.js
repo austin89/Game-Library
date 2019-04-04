@@ -6,7 +6,7 @@ export default BaseAuthenticator.extend({
 
   async authenticate({username, password}) {
     const payload = await this.firebaseApp
-           .auth().signInWithEmailAndPassword(username, password)
+           .auth().signInWithEmailAndPassword(email, password)
 
     return {
       uid: payload.uid,

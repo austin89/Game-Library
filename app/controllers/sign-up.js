@@ -5,6 +5,7 @@ const AUTHENTICATOR = 'authenticators:firebase';
 
 export default Controller.extend({
   session: service(),
+  currentUser:service(),
   firebaseApp: service(),
 
   actions: {
@@ -12,12 +13,27 @@ export default Controller.extend({
       console.log(this.firebaseApp);
       const app = this.firebaseApp;
 
-      try {
+      try
+      {
 
-        console.log('password')
-        const result = app.auth().createUserWithEmailAndPassword(email, password)
-        console.log(result)
-      } catch (e) {
+        //console.log('password')
+        const result = new Promise(app.auth().createUserWithEmailAndPassword(email, password))
+        result.then(
+          new Promise(this.get('controllers.login').send('authenticate',email, password)
+            ).then(this.store.createRecord('user',
+                                                  {
+                                                    userID: this.currentUser.data.uid,
+                                                    username: username,
+                                                    email: email
+                                                  }
+                                                  )
+                         .save()
+                    )
+            )
+        //console.log(result)
+      }
+      catch (e)
+      {
         console.log(e)
       }
 

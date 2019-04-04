@@ -1,8 +1,11 @@
 import Controller from '@ember/controller';
 import { equal } from '@ember/object/computed';
 import { computed } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default Controller.extend({
+  session:service(),
+  currentUser: service(),
 	queryParams: ['filter', 'limit', 'letter'],
 	filter: '',
 	letter: '',

@@ -14,7 +14,7 @@ export default Controller.extend({
     },
     async authenticate(){
       this.session.authenticate('authenticator:firebase', {
-        username: this.identification,
+        email: this.identification,
         password: this.password
       })
     }
