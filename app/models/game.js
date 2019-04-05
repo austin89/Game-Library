@@ -8,6 +8,7 @@ export default DS.Model.extend({
   released: DS.attr(),
   rating: DS.attr({defaultValue: 0}),
   platform: DS.attr(),
+  image: DS.attr(),
 
   isValid: notEmpty('name')
 });

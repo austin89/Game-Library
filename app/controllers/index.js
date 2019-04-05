@@ -44,8 +44,9 @@ export default Controller.extend({
       const company = this.company;
       const released = this.released;
       const platform = this.platform;
+      const image = this.image;
 
-      const newInvitation = this.store.createRecord('game', { name: game,  company: company, genre: genre, released: released, platform: platform});
+      const newInvitation = this.store.createRecord('game', { name: game,  company: company, genre: genre, released: released, platform: platform, image: image});
       newInvitation.save().then(response => {
         this.set('responseMessage', `Thank you! We have just saved your game: ${this.get('game')}`);
         this.set('game', '');
@@ -53,8 +54,10 @@ export default Controller.extend({
         this.set('company', '');
         this.set('platform', '');
         this.set('released', '');
+        this.set('image', '');
       });
     }
   }
+
 
 });

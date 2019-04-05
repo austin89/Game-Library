@@ -9,6 +9,7 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('about');
   this.route('games');
+  this.route('friends');
 });
 
 export default Router;
