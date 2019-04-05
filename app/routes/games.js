@@ -1,8 +1,7 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
-
-	queryParams:{
+		queryParams:{
 		limit: {refreshModel: true},
 		letter: {refreshModel: true}
 	},
@@ -10,25 +9,24 @@ export default Route.extend({
 	model(params) {
 		console.log("in games route");
 		if(params.limit === 'all'){
-    		return this.store.findAll('user');
+    		return this.store.findAll('game');
 		}
 
-		return this.store.query('user', {
+		return this.store.query('game', {
 			
-	      orderBy: 'username',
+	      orderBy: 'name',
 	      startAt: params.letter,
 	      endAt: params.letter+"\uf8ff"
 	    });
   	},
 
   	actions:{
-  		deleteFriend(user){
+  		deleteGame(game){
   			let confirmation = confirm('Are you sure?');
 
   			if(confirmation){
-  				user.destroyRecord();
+  				game.destroyRecord();
   			}
   		}
   	}
-  
 });
