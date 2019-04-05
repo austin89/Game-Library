@@ -20,8 +20,6 @@ export default Controller.extend({
     },
     createProfile(){
 			const username = this.username;
-			const 
-	
 			const newUser = this.store.createRecord('user', {username: username, email: email, userID:userID});
 			newUser.save().then(response => {
 				const form = document.getElementById("loginForm");
@@ -30,12 +28,12 @@ export default Controller.extend({
 				welcome.style.color = "white";
 				welcome.innerHTML = "Welcome, " + this.username + "!";
 				welcome.hidden = false;
-	
+
 			})
   }
 	//
 	//actions: {
-		
+
 	//	},
 	//
 	//	login(){
@@ -58,4 +56,4 @@ export default Controller.extend({
 	//
 	//	}
 	//}
-});
+}});

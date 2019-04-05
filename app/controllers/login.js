@@ -3,12 +3,14 @@ import { inject as service } from '@ember/service';
 
 export default Controller.extend({
   session: service(),
+  currentUser:service(),
   actions: {
     async authenticate(){
-      this.session.authenticate('authenticator:firebase', {
+      await this.session.authenticate('authenticator:firebase', {
         email: this.identification,
         password: this.password
       })
+      console.log(this.currentUser.data.uid);
     }
   }
 });

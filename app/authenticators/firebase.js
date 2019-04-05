@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service'
 export default BaseAuthenticator.extend({
   firebaseApp: service(),
 
-  async authenticate({username, password}) {
+  async authenticate({email, password}) {
     const payload = await this.firebaseApp
            .auth().signInWithEmailAndPassword(email, password)
 
