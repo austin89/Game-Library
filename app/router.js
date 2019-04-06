@@ -11,7 +11,9 @@ Router.map(function() {
   this.route('games', function() {
     this.route('show', {path: '/:id'});
   });
-  this.route('friends');
+  this.route('friends', function() {
+    this.route('show', {path: '/:id'});
+  });
   this.route('info');
 });
 
