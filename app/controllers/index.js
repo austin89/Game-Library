@@ -21,7 +21,7 @@ export default Controller.extend({
       const platform = this.platform;
       const image = this.image;
 
-      const newInvitation = this.store.createRecord('game', { name: game,  company: company, genre: genre, released: released, platform: platform, image: image});
+      const newInvitation = this.store.createRecord('game', { id: game, name: game,  company: company, genre: genre, released: released, platform: platform, image: image});
       newInvitation.save().then(response => {
         this.set('responseMessage', `Thank you! We have just saved your game: ${this.get('game')}`);
         this.set('game', '');
