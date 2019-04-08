@@ -1,0 +1,45 @@
+<h1>Game Library</h1>
+<div class="row">
+  <div class="col-md-1">
+    {{#link-to (query-params limit='all' letter='') class='btn btn-default btn-lg btn-block'}}All{{/link-to}}
+  </div>
+  <div class="col-md-1">
+    {{#link-to (query-params limit='abc') class='btn btn-default btn-lg btn-block'}}Abc{{/link-to}}
+  </div>
+
+  <div class="col-md-10">
+    {{#if limitAll}}
+      <div class="form-group">
+        {{input value=filter class="form-control input-lg" placeholder="Filter by game name"}}
+      </div>
+    {{else}}
+      {{log "hereeeeeeee"}}
+        <div class="form-group">
+          {{abc-buttons}}
+        </div>
+    {{/if}}
+  </div>
+</div>
+
+<br/>
+
+<div class="row">
+  {{#each filteredList as |game|}}
+    <div class="col-md-4">
+        {{#game-item game=game}}
+          <button class="btn btn-danger btn-xs" {{action 'deleteGame' game}}>Delete</button>
+        {{/game-item}}
+      </div>
+      {{else}}
+      {{#if model.isUpdating}}
+          {{spinner-cube}}
+      {{else}}
+          <div class="col-md-12 text-center">
+          <div class="alert alert-info">
+              Sorry, no result.
+          </div>
+      </div>
+    {{/if}}
+  {{/each}}
+</div>
+{{outlet}}

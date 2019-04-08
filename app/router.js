@@ -8,7 +8,13 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('about');
-  this.route('games');
+  this.route('games', function() {
+    this.route('show', {path: '/:id'});
+  });
+  this.route('friends', function() {
+    this.route('show', {path: '/:id'});
+  });
+  this.route('info');
   this.route('login');
   this.route('sign-up');
 });
