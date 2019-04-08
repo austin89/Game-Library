@@ -9,6 +9,7 @@ export default DS.Model.extend({
   rating: DS.attr({defaultValue: 0}),
   platform: DS.attr(),
   image: DS.attr(),
+  comments: DS.hasMany('comment', {async: true}),
 
   isValid: notEmpty('name')
 });

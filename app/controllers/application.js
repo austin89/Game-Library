@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Controller from '@ember/controller';
 
 export default Controller.extend({
@@ -40,5 +41,11 @@ export default Controller.extend({
 			}
 
 		}
+	},
+
+	didInsertElement: function(){
+		$(window).scroll(function(){
+    	$(".top").css("opacity", 1 - $(window).scrollTop() / 250);
+  		});
 	}
 });

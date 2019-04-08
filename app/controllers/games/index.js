@@ -24,6 +24,12 @@ export default Controller.extend({
         results = results.filter((item) => item.get('name').match(regex));
       }
       return results.sortBy('name');
-  })
+  }),
+
+  actions: {
+  	clearSearch(){
+  		this.set('filter', '');
+  	}
+  }
 
 });
