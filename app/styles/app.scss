@@ -32,3 +32,14 @@ body {
   color: rgb(33, 33, 33);
   background-color: rgb(33, 33, 33);
 }
+
+.shadow-textarea textarea.form-control::placeholder {
+    font-weight: 300;
+}
+.shadow-textarea textarea.form-control {
+    padding-left: 0.8rem;
+}
+
+.comment-container {
+	width: 500px;
+}

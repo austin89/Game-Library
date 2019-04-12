@@ -1,8 +1,14 @@
 # TODO
-- Add genre checkboxes
-- Add platform checkboxes
-- Add date field
-- Add more things to database
+- Add login page as home page
+- Integrate user authentication into new branches
+- Add ability for user to add friend
+- Add ability for user to delete friend
+- Add ability for user to add game to favorites
+- Add ability for user to delete game from favorites
+- Figure out what informatiton to go on user profile page
+- Reformat game page to look nicer
+- Reformat comments to look nicer and display user who posted comment
+- Fix date on user comments
 
 # libapp
 

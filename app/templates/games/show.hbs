@@ -1,3 +1,6 @@
+
+
+
 <div class="jumbo show-listing">
   <h2 class="title">{{model.name}}</h2>
   <div class="right detail-section">
@@ -13,11 +16,16 @@
     <div class="detail">
       <strong>Release Date:</strong> {{model.released}}
     </div>
+    <div class="detail">
+      <strong>Rating:</strong> {{star-rating rating=model.rating anyPercent=true onClick=(action 'rateGame' model)}}
+    </div>
   </div>
   <img src="{{model.image}}" class="cover-pic">
 </div>
 
 <br>
+
+<!--
 
 <div class="jumbotron text-center">
    <p>Add a Comment</p>
@@ -37,3 +45,32 @@
    <br/><br/>
 
 </div>
+-->
+
+<div class="comment-container">
+  <div class="form-group shadow-textarea">
+    <label for="exampleFormControlTextarea6">Add a Comment</label>
+    {{textarea type="text" value=comment enter=(action 'addComment' model) class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Write something here..." autocomplete="off"}}
+    <button class="btn btn-primary btn-lg btn-block" {{action 'addComment' model}}>Submit Comment</button>
+  </div>
+</div>
+
+
+
+<div class="row">
+  {{#each model.comment as |comment|}}
+    <div class="col-md-4">
+        {{#comment-item comment=comment}}
+        {{/comment-item}}
+        <br/>
+      </div>
+      {{else}}
+          <div class="col-md-12 text-center">
+          <div class="alert alert-info">
+              Be the first to leave a comment!
+          </div>
+      </div>
+  {{/each}}
+</div>
+
+

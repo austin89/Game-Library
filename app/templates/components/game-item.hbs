@@ -10,11 +10,10 @@
 		<p>Company: {{game.company}}</p>
 		<p>Platform: {{game.platform}}</p>
 		<p>Release Date: {{game.released}}</p>
+		<p>{{star-rating rating=game.rating anyPercent=true readOnly=true height=13 width=13 fillColor='gold'}}</p>
 	</div>
 	{{/link-to}}
 	<div class="panel-footer text-right">
      {{yield}}
    	</div>
 </div>
-
-
