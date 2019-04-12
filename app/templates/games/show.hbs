@@ -1,6 +1,14 @@
+
+
+<div class="game-image-container">
+
+</div>
 <div class="jumbo show-listing">
   <h2 class="title">{{model.name}}</h2>
-  <div class="right detail-section">
+  
+
+     <img src="{{model.image}}" class="cover-pic col-xs-12 col-md-8">
+  <div class="right detail-section col-xs-12 col-md-4">
     <div class="detail owner">
       <strong>Genre:</strong> {{model.genre}}
     </div>
@@ -13,6 +21,61 @@
     <div class="detail">
       <strong>Release Date:</strong> {{model.released}}
     </div>
+    <div class="detail">
+      {{star-rating rating=model.rating fillColor='gold' anyPercent=true onClick=(action 'rateGame' model) width=20 height=20}}
+    </div>
   </div>
-  <img src="{{model.image}}" class="cover-pic">
+  
 </div>
+
+<br>
+
+<!--
+
+<div class="jumbotron text-center">
+   <p>Add a Comment</p>
+
+   <br/><br/>
+
+   <div class="form-horizontal form-group form-group-lg row">
+     <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
+       {{textarea type="text" value=comment enter=(action 'addComment' model) class="form-control" placeholder="Enter comment here" autocomplete="off"}}
+     </div>
+      
+     <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-4 col-md-3">
+       <button class="btn btn-primary btn-lg btn-block" {{action 'addComment' model}}>Submit Comment</button>
+     </div>
+   </div>
+
+   <br/><br/>
+
+</div>
+-->
+
+<div class="comment-container">
+  <div class="form-group shadow-textarea">
+  
+    {{textarea type="text" value=comment enter=(action 'addComment' model) class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Write something here..." autocomplete="off"}}
+    <button class="btn btn-primary btn-lg btn-block" {{action 'addComment' model}}>Submit Comment</button>
+  </div>
+</div>
+
+
+
+<div class="row">
+  {{#each model.comment as |comment|}}
+    <div class="col-md-4">
+        {{#comment-item comment=comment}}
+        {{/comment-item}}
+        <br/>
+      </div>
+      {{else}}
+          <div class="col-md-12 text-center">
+          <div class="alert alert-info">
+              Be the first to leave a comment!
+          </div>
+      </div>
+  {{/each}}
+</div>
+
+

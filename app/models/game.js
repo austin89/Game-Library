@@ -7,8 +7,10 @@ export default DS.Model.extend({
   genre: DS.attr(),
   released: DS.attr(),
   rating: DS.attr({defaultValue: 0}),
+  numRatings: DS.attr({defaultValue: 0}),
   platform: DS.attr(),
   image: DS.attr(),
+  comment: DS.hasMany('comment', {async: true}),
 
   isValid: notEmpty('name')
 });
