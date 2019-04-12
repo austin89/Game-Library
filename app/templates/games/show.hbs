@@ -1,9 +1,14 @@
 
 
+<div class="game-image-container">
 
+</div>
 <div class="jumbo show-listing">
   <h2 class="title">{{model.name}}</h2>
-  <div class="right detail-section">
+  
+
+     <img src="{{model.image}}" class="cover-pic col-xs-12 col-md-8">
+  <div class="right detail-section col-xs-12 col-md-4">
     <div class="detail owner">
       <strong>Genre:</strong> {{model.genre}}
     </div>
@@ -17,10 +22,10 @@
       <strong>Release Date:</strong> {{model.released}}
     </div>
     <div class="detail">
-      <strong>Rating:</strong> {{star-rating rating=model.rating anyPercent=true onClick=(action 'rateGame' model)}}
+      {{star-rating rating=model.rating fillColor='gold' anyPercent=true onClick=(action 'rateGame' model) width=20 height=20}}
     </div>
   </div>
-  <img src="{{model.image}}" class="cover-pic">
+  
 </div>
 
 <br>
@@ -49,7 +54,7 @@
 
 <div class="comment-container">
   <div class="form-group shadow-textarea">
-    <label for="exampleFormControlTextarea6">Add a Comment</label>
+  
     {{textarea type="text" value=comment enter=(action 'addComment' model) class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Write something here..." autocomplete="off"}}
     <button class="btn btn-primary btn-lg btn-block" {{action 'addComment' model}}>Submit Comment</button>
   </div>
