@@ -7,8 +7,6 @@
 - Add ability for user to delete game from favorites
 - Figure out what informatiton to go on user profile page
 - Reformat game page to look nicer
-- Reformat comments to look nicer and display user who posted comment
-- Fix date on user comments
 
 # libapp
 
