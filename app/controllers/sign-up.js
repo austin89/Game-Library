@@ -34,7 +34,7 @@ export default Controller.extend({
           console.log("Now here");
           self.store.createRecord('user',
                                                       {
-                                                        userID: userID,
+                                                        id: userID,
                                                         username: uname,
                                                         email: e
                                                       }

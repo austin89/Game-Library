@@ -2,9 +2,10 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
 import { match, not, equal } from '@ember/object/computed';
+import{ inject as service } from '@ember/service';
 
 export default Controller.extend({
-
+  session: service(),
   responseMessage: '',
   game: '',
 

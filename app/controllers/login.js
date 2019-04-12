@@ -10,6 +10,14 @@ export default Controller.extend({
         email: this.identification,
         password: this.password
       })
+      let previousTransition = this.previousTransition;
+      if (previousTransition) {
+        this.set('previousTransition', null);
+        previousTransition.retry();
+      } else {
+        // Default back to homepage
+        this.transitionToRoute('index');
+      }
       console.log(this.currentUser.data.uid);
     }
   }
