@@ -5,6 +5,15 @@ import { inject as service } from '@ember/service';
 
 export default Controller.extend({
   currentUser:service(),
+  userModelGames: computed("userGames", async function(){
+
+    let userID = await this.currentUser.data.uid;
+    let userRecord = await this.store.findRecord('user', userID);
+    console.log("userGames");
+    console.log(userRecord);
+    return userRecord.userGames;
+
+  }),
   showDel:true,
   queryParams: ['filter', 'limit', 'letter'],
   filter: '',
@@ -13,7 +22,7 @@ export default Controller.extend({
 
   limitAll: equal('limit', 'all'),
 
-  
+
 
   filteredList: computed('model.@each.name', 'filter', function() {
     let results=this.model;
@@ -47,6 +56,13 @@ export default Controller.extend({
       console.log('game in table');
     }else console.log('game not in table');
       this.showDel = false;
+  },
+  async setUserGames(){
+      console.log("inside action");
+      let userID = await this.currentUser.data.uid;
+      let userRecord = await this.store.findRecord('user', userID);
+      console.log(userRecord);
+      this.setProperty('userModelGames', userRecord.userGames);
   }
 
   }
