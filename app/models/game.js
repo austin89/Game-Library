@@ -11,7 +11,7 @@ export default DS.Model.extend({
   platform: DS.attr(),
   image: DS.attr(),
   comment: DS.hasMany('comment', {async: true}),
-  user: DS.belongsTo('user', {async: true}),
+  gameUser: DS.hasMany('user', {async: true}),
 
   isValid: notEmpty('name')
 });

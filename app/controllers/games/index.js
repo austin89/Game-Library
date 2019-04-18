@@ -5,15 +5,16 @@ import { inject as service } from '@ember/service';
 
 export default Controller.extend({
   currentUser:service(),
-  userModelGames: computed("userGames", async function(){
-
-    let userID = await this.currentUser.data.uid;
-    let userRecord = await this.store.findRecord('user', userID);
-    console.log("userGames");
-    console.log(userRecord);
-    return userRecord.userGames;
-
-  }),
+  // userModelGames: computed('model.@each.name', 'userGames', async function(){
+  //   let results = this.model;
+  //   console.log('model: ' + results);
+  //   let userID = await this.currentUser.data.uid;
+  //   let userRecord = await this.store.findRecord('user', userID);
+  //   console.log("userGames");
+  //   console.log(userRecord.get('userGames'));
+  //   return userRecord.get('userGames').content.canonicalState;
+  //
+  // }),
   showDel:true,
   queryParams: ['filter', 'limit', 'letter'],
   filter: '',
@@ -44,6 +45,24 @@ export default Controller.extend({
   	clearSearch(){
   		this.set('filter', '');
   	},
+    async addGame(game){
+      // let addedGame =  await this.store.findRecord('game', game.id);
+      // console.log("added game: "+ addedGame);
+      let userID = await this.currentUser.data.uid;
+      let userRecord = await this.store.findRecord('user', userID);
+    userRecord.get('userGames').pushObject(game);
+    game.get('gameUser').pushObject(userRecord);
+    game.save().then(function(){
+      userRecord.save();
+    });
+    },
+    deleteGame(game){
+      let confirmation = confirm('Are you sure?');
+
+      if(confirmation){
+        game.destroyRecord();
+      }
+    },
     async checkUserGames(game){
     // let currentGame = this.store.findRecord('game', game.id);
 
@@ -57,13 +76,7 @@ export default Controller.extend({
     }else console.log('game not in table');
       this.showDel = false;
   },
-  async setUserGames(){
-      console.log("inside action");
-      let userID = await this.currentUser.data.uid;
-      let userRecord = await this.store.findRecord('user', userID);
-      console.log(userRecord);
-      this.setProperty('userModelGames', userRecord.userGames);
-  }
+
 
   }
 

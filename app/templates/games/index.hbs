@@ -1,4 +1,5 @@
 <h1>Game Library</h1>
+{{#if userModelGames}}<div></div> {{/if}}
 <div class="row">
   <div class="col-md-1">
     {{#link-to (query-params limit='all' letter='') class='btn btn-default btn-lg btn-block'}}All{{/link-to}}
@@ -29,11 +30,11 @@
         {{#game-item game=game}}
 
           <button class="btn btn-success btn-xs" >Check</button>
-          {{#if (user-has-game game userModelGames)}}
+          {{#unless (user-has-game game.gameUser currentUser.data.session.uid)}}
           <button class="btn btn-danger btn-xs" {{action 'deleteGame' game}}>Delete</button>
           {{else}}
           <button class="btn btn-success btn-xs" {{action 'addGame' game}}>Add</button>
-          {{/if}}
+          {{/unless}}
         {{/game-item}}
       </div>
       {{else}}
