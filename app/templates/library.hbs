@@ -1,4 +1,4 @@
-<h1>All Games</h1>
+<h1>Your Game Library</h1>
 <div class="row">
   <div class="col-md-1">
     {{#link-to (query-params limit='all' letter='') class='btn btn-default btn-lg btn-block'}}All{{/link-to}}
@@ -26,7 +26,10 @@
 <div class="row">
   {{#each filteredList as |game|}}
     <div class="col-md-4">
-        {{#game-item game=game users=game.gameUser userModel=user}}
+        {{#game-item game=game}}
+          <button class="btn btn-success btn-xs" >Check</button>
+          <button class="btn btn-success btn-xs" {{action 'addGame' game}}>Add</button>
+          <button class="btn btn-danger btn-xs" {{action 'deleteGame' game}}>Delete</button>
         {{/game-item}}
       </div>
       {{else}}

@@ -14,6 +14,12 @@
 	</div>
 	{{/link-to}}
 	<div class="panel-footer text-right">
+	<!--<button class="btn btn-success btn-xs" {{action 'checkUserGamesMethod' game users}} >Check</button>-->
+	    {{#unless checkUserGames}}
+	    	<button type='submit' class="btn btn-success btn-xs" {{action 'addGame' game}}>Add to Favorites</button>
+        {{else}}
+            <button class="btn btn-danger btn-xs" {{action 'deleteGame' game}}>Remove from Favorites</button>
+        {{/unless}}
      {{yield}}
    	</div>
 </div>
