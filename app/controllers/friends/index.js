@@ -25,5 +25,11 @@ export default Controller.extend({
 	      results = results.filter((item) => item.get('username').match(regex));
 	    }
 	    return results.sortBy('username');
-	})
+	}),
+	actions: {
+  	clearSearch(){
+  		this.set('filter', '');
+  	}
+
+  }
 });

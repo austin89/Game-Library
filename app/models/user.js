@@ -4,7 +4,6 @@ export default DS.Model.extend({
   	username: DS.attr(),
 	email: DS.attr(),
 	comment: DS.hasMany('comment', {async: true}),
-	friends: DS.hasMany('friend', {async: true}),
+	friend: DS.hasMany('user', {async: true}),
 	userGames: DS.hasMany('game', {async: true})
-
 });
