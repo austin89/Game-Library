@@ -1,12 +1,17 @@
 import Controller from '@ember/controller';
 import { computed, set } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default Controller.extend({
-
+	currentUser: service(),
+	store: service(),
 	actions: {
-		addComment(game){
+		async addComment(game){
 			console.log('in addComment')
 			console.log('game: ' + game);
+
+			let userID = this.currentUser.data.uid;
+			let currentUser = await this.get('store').findRecord('user', userID);
 
 			let now = new Date();
 
@@ -22,13 +27,25 @@ export default Controller.extend({
 			let today = now.toLocaleString('en-us', options);
 
 			var comment = this.comment;
-			let currentGame = this.get('store').peekRecord('game', game.id);
+			let currentGame = await this.get('store').peekRecord('game', game.id);
 
-			let newComment = this.get('store').createRecord('comment', {
-				game: currentGame, text: comment, createdAt: today
+			await console.log('name:' + currentUser.username);
+
+			let newComment = await this.get('store').createRecord('comment', {
+				game: currentGame, 
+				text: comment, 
+				createdAt: today, 
+				user: currentUser, 
+				name: currentUser.username
 			});
-			currentGame.get('comment').pushObject(newComment);
-			newComment.save().then(function(){
+
+			await console.log('comment name: ' + newComment.name);
+
+			await currentGame.get('comment').pushObject(newComment);
+			await currentUser.get('comment').pushObject(newComment);
+			await newComment.save().then(function(){
+				currentUser.save()
+			}).then(function(){
 				currentGame.save();
 			});
 			this.set('comment', '');
