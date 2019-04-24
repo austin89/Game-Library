@@ -23,8 +23,7 @@
 <div class="row">
 	{{#each filteredList as |user|}}
 		<div class="col-md-4">
-	  		{{#user-info friend=user friendList=user.friend}}
-	  			
+	  		{{#user-info friend=user userRecord=userRecord}}
 	  		{{/user-info}}
 	  	</div>
 	  	{{else}}

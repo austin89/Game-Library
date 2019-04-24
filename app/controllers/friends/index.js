@@ -1,8 +1,10 @@
 import Controller from '@ember/controller';
 import { equal } from '@ember/object/computed';
 import { computed } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default Controller.extend({
+	currentUser: service(),
 	queryParams: ['filter', 'limit', 'letter'],
 	filter: '',
 	letter: '',
@@ -11,9 +13,9 @@ export default Controller.extend({
 	limitAll: equal('limit', 'all'),
 
 	filteredList: computed('model.@each.username', 'filter', function() {
-		console.log("in friends controller");
-		let results=this.model;
+		let results=this.allUsers;
 		const query = this.filter;
+		results = results.filter((item) => !(item.get('id').match(this.currentUser.data.uid)));
 
 		if (query) {
 	      // One of the best regular expression website: http://www.regexr.com/
@@ -23,9 +25,11 @@ export default Controller.extend({
 	      const regex = new RegExp(regexString, 'ig');
 
 	      results = results.filter((item) => item.get('username').match(regex));
+
 	    }
 	    return results.sortBy('username');
 	}),
+	
 	actions: {
   	clearSearch(){
   		this.set('filter', '');

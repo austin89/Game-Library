@@ -1,23 +1,37 @@
 import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
+import { hash } from 'rsvp';
 
 export default Route.extend({
+	currentUser: service(),
 	queryParams:{
 		limit: {refreshModel: true},
 		letter: {refreshModel: true}
 	},
 
 	model(params) {
-		console.log("in friends route");
+		let allUsers = null;
 		if(params.limit === 'all'){
-    		return this.store.findAll('user');
+    		allUsers = this.store.findAll('user');
+		}else{
+
+			allUsers = this.store.query('user', {
+				
+		      orderBy: 'username',
+		      startAt: params.letter,
+		      endAt: params.letter+"\uf8ff"
+		    });
 		}
 
-		return this.store.query('user', {
-			
-	      orderBy: 'username',
-	      startAt: params.letter,
-	      endAt: params.letter+"\uf8ff"
-	    });
+	    return hash({
+	    	allUsers: allUsers,
+	    	userRecord: this.store.findRecord('user', this.currentUser.data.uid)
+	    })
+  	},
+
+  	setupController(controller, model){
+  		controller.set('allUsers', model.allUsers);
+  		controller.set('userRecord', model.userRecord);
   	},
 
   	actions:{

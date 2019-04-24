@@ -1,13 +1,11 @@
 
 
-<div class="game-image-container">
+<div class="container">
 
-</div>
-<div class="jumbo show-listing">
+
+<div class="show-listing">
   <h2 class="title">{{model.name}}</h2>
-  
-
-     <img src="{{model.image}}" class="cover-pic col-xs-12 col-md-8">
+  <img src="{{model.image}}" class="cover-pic col-xs-12 col-md-8">
   <div class="right detail-section col-xs-12 col-md-4">
     <div class="detail owner">
       <strong>Genre:</strong> {{model.genre}}
@@ -22,55 +20,35 @@
       <strong>Release Date:</strong> {{model.released}}
     </div>
     <div class="detail">
-      {{star-rating rating=model.rating fillColor='gold' anyPercent=true onClick=(action 'rateGame' model) width=20 height=20}}
+      {{star-rating rating=model.rating readOnly=true fillColor='gold' anyPercent=true width=20 height=20}}
     </div>
   </div>
   
 </div>
 
 <br>
+<div class="col-xs-12"></div>
+<span class="rating-container col-xs-12"><b style="font-size:17px">Your Rating:</b>{{star-rating rating=model.rating readOnly=false fillColor='gold' anyPercent=true onClick=(action 'rateGame' model) width=20 height=20}}</span>
 
-<!--
-
-<div class="jumbotron text-center">
-   <p>Add a Comment</p>
-
-   <br/><br/>
-
-   <div class="form-horizontal form-group form-group-lg row">
-     <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
-       {{textarea type="text" value=comment enter=(action 'addComment' model) class="form-control" placeholder="Enter comment here" autocomplete="off"}}
-     </div>
-      
-     <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-4 col-md-3">
-       <button class="btn btn-primary btn-lg btn-block" {{action 'addComment' model}}>Submit Comment</button>
-     </div>
-   </div>
-
-   <br/><br/>
-
-</div>
--->
-
-<div class="comment-container">
-  <div class="form-group shadow-textarea">
-  
+<div class="comment-container col-xs-12">
+  <div class="form-group shadow-textarea ">
     {{textarea type="text" value=comment enter=(action 'addComment' model) class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Write something here..." autocomplete="off"}}
     <button class="btn btn-primary btn-lg btn-block" {{action 'addComment' model}}>Submit Comment</button>
   </div>
+
 </div>
 
 
 
-<div class="row">
+<div class="row col-xs-12">
   {{#each model.comment as |comment|}}
-    <div class="col-md-4">
+    <div class="col-xs-12">
         {{#comment-item comment=comment}}
         <br>
         {{/comment-item}}
         </div>
       {{else}}
-          <div class="col-md-12 text-center">
+          <div class="col-xs-8 text-center">
           <div class="alert alert-info">
               Be the first to leave a comment!
           </div>
@@ -78,4 +56,4 @@
   {{/each}}
 </div>
 
-
+</div>

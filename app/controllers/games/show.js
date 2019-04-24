@@ -51,16 +51,43 @@ export default Controller.extend({
 			this.set('comment', '');
 		},
 
-		rateGame(game, rating){
+		async rateGame(game, rating){
 			set(this, 'rating', rating);
+			let stars = rating;
 			console.log('in rateGame');
 			console.log('value: ' + this.model.rating);
+			let self = this;
+			let userRecord = await this.store.findRecord('user', this.currentUser.data.uid);
+			let gameRatings = userRecord.get('ratings');
+			let thisGameRating = gameRatings.find((item) => item.gameName === game.id);
+			if(thisGameRating != null){
+
+				thisGameRating.set('value', rating);
+				thisGameRating.save().then(function(){
+					userRecord.save();
+				});
+				
+
+
+			}else{
+				console.log('first time');
+				let userRating = this.store.createRecord('rating');
+				// userRating.save();
+				userRating.set('user', userRecord);
+				userRating.set('gameName', game.id);
+				userRating.set('value', stars);
+				await userRating.save();
+				await userRecord.get('ratings').pushObject(userRating);
+				console.log("inside saving user record");
+				await userRecord.save();
+			}
 			
-			let stars = rating;
+			
 			console.log('stars: ' + stars);
 			let totalRatings = game.numRatings;
 			console.log('total: ' + totalRatings);
 			this.store.findRecord('game', game.id).then(function(i) {
+				console.log('rating: ' + i.rating);
 				let totalRatings = i.get('numRatings');
 				if(totalRatings>0){
 					let currentRating = i.get('rating');
