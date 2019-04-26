@@ -17,16 +17,27 @@ export default Component.extend({
 			}
    	}),
 	actions: {
-		  	async addGame(game){
-	  			let userID = await this.currentUser.data.uid;
-	  			let userRecord = await this.get('store').findRecord('user', userID);
-				userRecord.get('userGames').pushObject(game);
-				game.save().then(function(){
-					userRecord.save();
+		async addGame(game){
+  			let userID = await this.currentUser.data.uid;
+  			let userRecord = await this.get('store').findRecord('user', userID);
+			userRecord.get('userGames').pushObject(game);
+			game.save().then(function(){
+				userRecord.save();
 
-				});
-				this.toggleProperty('checkUserGames');
+			});
+			this.set('checkUserGames', true);
   		},
+
+  		async removeGame(game){
+  			let userID = await this.currentUser.data.uid;
+  			let userRecord = await this.get('store').findRecord('user', userID);
+  			userRecord.get('userGames').removeObject(game);
+			game.save().then(function(){
+				userRecord.save();
+
+			});
+			this.set('checkUserGames', false);
+  		}
 
 	}
 });

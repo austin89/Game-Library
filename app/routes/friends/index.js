@@ -3,6 +3,7 @@ import { inject as service } from '@ember/service';
 import { hash } from 'rsvp';
 
 export default Route.extend({
+	session: service(),
 	currentUser: service(),
 	queryParams:{
 		limit: {refreshModel: true},

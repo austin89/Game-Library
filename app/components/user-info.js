@@ -8,6 +8,7 @@ export default Component.extend({
 	checkUserFriends: computed(function(){
 		let friend = this.get('friend');
 		let userRecord = this.get('userRecord');
+		console.log('user record: ' + userRecord);
 		if(userRecord.friend.find(i => i.id === friend.id) != null) return true;
 		else return false;
 	}),
