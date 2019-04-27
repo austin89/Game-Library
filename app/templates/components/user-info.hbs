@@ -5,15 +5,16 @@
 	</div>
 	<div class="panel-body">
 		<p>Username: {{friend.username}}</p>
-		<p>Password: {{friend.password}}</p>
 		</div>
 		{{/link-to}}
 		<div class="panel-footer text-right">
+		{{#unless onShow}}
 			{{#unless checkUserFriends}}
 				<button class="btn btn-success btn-xs" {{action 'addFriend' friend}}>Follow</button>
 			{{else}}
 				<button class="btn btn-danger btn-xs" {{action 'deleteFriend' friend}}>Unfollow</button>
 			{{/unless}}
 	      	{{yield}}
+	     {{/unless}} 	
     	</div>
 </div>

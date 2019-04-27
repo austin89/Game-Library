@@ -9,16 +9,27 @@ export default Component.extend({
 		let friend = this.get('friend');
 		let userRecord = this.get('userRecord');
 		console.log('user record: ' + userRecord);
-		if(userRecord.friend.find(i => i.id === friend.id) != null) return true;
-		else return false;
+		if(userRecord.friend.find(i => i.id === friend.id) != null){ 
+			console.log('returning true')
+			return true;
+		}
+		else{ 
+			console.log('returning false')
+			return false;
+
+		}
 	}),
 	actions: {
-		async addFriend(friend){
+		async addFriend(newFriend){
+
+			let self = this;
+			console.log('friend: ' + newFriend);
 			let userID = await this.currentUser.data.uid;
 			let currentUser = await this.get('store').findRecord('user', userID);
-			currentUser.get('friend').pushObject(friend);
-			currentUser.save();
+			await currentUser.get('friend').pushObject(newFriend);
+			await currentUser.save();
 			this.toggleProperty('checkUserFriends');
+			console.dir(this.get('userRecord'));
 		}
 	}
 });

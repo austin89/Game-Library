@@ -12,9 +12,10 @@ export default Route.extend({
 		
 	},
   	setupController(controller, model){
+  		this._super(controller, model);
 		controller.set('pageUser', model.pageUser);
 		console.dir('pageUser: ' + model.pageUser);
 		controller.set('userRecord', model.userRecord);
 		console.dir('userRecord model: ' + model.userRecord);
-  	},
+  	}
 });
