@@ -375,3 +375,33 @@ input[type=text]:placeholder {
 #icon {
   width:60%;
 }
+
+
+/* COMMENT SECTION */
+
+.comment-wrapper{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height: 575px;
+    white-space:nowrap
+
+}
+
+.comment-wrapper .panel-body {
+    max-height:575px;
+    overflow:auto;
+    
+}
+
+.comment-wrapper .media-list .media img {
+    width:128px;
+    height:128px;
+    border:2px solid #e5e7e8;
+}
+
+.comment-wrapper .media-list .media {
+    border-bottom:1px dashed #efefef;
+    margin-bottom:25px;
+}
+
+

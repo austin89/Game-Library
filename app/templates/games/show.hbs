@@ -1,59 +1,59 @@
-
-
 <div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="show-listing">
+                <h2 class="title">{{model.name}}</h2>
+                <img src="{{model.image}}" class="cover-pic col-xs-12 col-md-8">
+                <div class="right detail-section col-xs-12 col-md-4">
+                    <div class="detail owner">
+                        <strong>Genre:</strong> {{model.genre}}
+                    </div>
+                    <div class="detail">
+                        <strong>Company:</strong> {{model.company}}
+                    </div>
+                    <div class="detail">
+                        <strong>Platform:</strong> {{model.platform}}
+                    </div>
+                    <div class="detail">
+                        <strong>Release Date:</strong> {{model.released}}
+                    </div>
+                    <div class="detail">
+                        {{star-rating rating=model.rating readOnly=true fillColor='gold' anyPercent=true width=20 height=20}}
+                    </div>
+                </div>
 
-
-<div class="show-listing">
-  <h2 class="title">{{model.name}}</h2>
-  <img src="{{model.image}}" class="cover-pic col-xs-12 col-md-8">
-  <div class="right detail-section col-xs-12 col-md-4">
-    <div class="detail owner">
-      <strong>Genre:</strong> {{model.genre}}
-    </div>
-    <div class="detail">
-      <strong>Company:</strong> {{model.company}}
-    </div>
-    <div class="detail">
-      <strong>Platform:</strong> {{model.platform}}
-    </div>
-    <div class="detail">
-      <strong>Release Date:</strong> {{model.released}}
-    </div>
-    <div class="detail">
-      {{star-rating rating=model.rating readOnly=true fillColor='gold' anyPercent=true width=20 height=20}}
-    </div>
-  </div>
-  
-</div>
-
-<br>
-<div class="col-xs-12"></div>
-<span class="rating-container col-xs-12"><b style="font-size:17px">Your Rating:</b>{{star-rating rating=model.rating readOnly=false fillColor='gold' anyPercent=true onClick=(action 'rateGame' model) width=20 height=20}}</span>
-
-<div class="comment-container col-xs-12">
-  <div class="form-group shadow-textarea ">
-    {{textarea type="text" value=comment enter=(action 'addComment' model) class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Write something here..." autocomplete="off"}}
-    <button class="btn btn-primary btn-lg btn-block" {{action 'addComment' model}}>Submit Comment</button>
-  </div>
-
-</div>
-
-
-
-<div class="row col-xs-12">
-  {{#each model.comment as |comment|}}
-    <div class="col-xs-12">
-        {{#comment-item comment=comment}}
-        <br>
-        {{/comment-item}}
+            </div>
         </div>
-      {{else}}
-          <div class="col-xs-8 text-center">
-          <div class="alert alert-info">
-              Be the first to leave a comment!
-          </div>
-      </div>
-  {{/each}}
-</div>
+
+        <div class="col-xs-6">
+            <div class="row bootstrap snippets">
+                <div class="comment-wrapper">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Comments
+                        </div>
+                        <div class="panel-body">
+                            {{textarea type="text" value=comment enter=(action 'addComment' model) class="form-control" id="exampleFormControlTextarea6" rows="3" placeholder="Write something here..." autocomplete="off"}}
+                            <button class="btn btn-info pull-right" {{action 'addComment' model}}>Submit Comment</button>
+                            <div class="clearfix"></div>
+                            <hr>
+                            <ul class="media-list">
+                                {{#each model.comment as |comment|}} {{#comment-item comment=comment}} {{/comment-item}} {{else}}
+                                <div class="col-xs-8 text-center">
+                                    <div class="alert alert-info">
+                                        Be the first to leave a comment!
+                                    </div>
+                                </div>
+                                {{/each}}
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
 
 </div>
