@@ -13,7 +13,7 @@ export default Route.extend({
 	model(params) {
 		let allUsers = null;
 		if(params.limit === 'all'){
-    		allUsers = this.store.findAll('user');
+    		allUsers = this.store.query('user', {});
 		}else{
 
 			allUsers = this.store.query('user', {

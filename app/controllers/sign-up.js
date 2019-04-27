@@ -19,38 +19,26 @@ export default Controller.extend({
       try
       {
         const self=this;
-        //console.log('password')
         await app.auth().createUserWithEmailAndPassword(e, pass);
         await self.session.authenticate('authenticator:firebase', {
           email: e,
           password: pass
-        })
+        });
 
-          console.log("Here");
-          const userID= this.currentUser.data.uid;
-          console.log(userID);
-          const username = uname;
-          const email= e;
-          console.log("Now here");
-          self.store.createRecord('user',
-                                                      {
-                                                        id: userID,
-                                                        username: uname,
-                                                        email: e
-                                                      }
-                                                      )
-                             .save()
-      // ).then(function(){console.log("Now here");self.store.createRecord('user',
-      //                                             {
-      //                                               userID: self.currentUser.data.uid,
-      //                                               username: uname,
-      //                                               email: e
-      //                                             }
-      //                                             )
-      //                    .save()
-      //               })
+        console.log("Here");
+        const userID= this.currentUser.data.uid;
+        console.log(userID);
+        const username = uname;
+        const email= e;
+        console.log("Now here");
+        self.store.createRecord('user', {
+          id: userID,
+          username: uname,
+          email: e
+        }).save();
 
-        //console.log(result)
+        this.transitionToRoute('index');
+      
       }
       catch (e)
       {

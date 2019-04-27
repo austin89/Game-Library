@@ -12,6 +12,7 @@ export default Controller.extend({
   actions: {
     invalidateSession() {
       this.get('session').invalidate();
+      this.transitionToRoute('login');
     },
     async authenticate(){
       this.session.authenticate('authenticator:firebase', {
