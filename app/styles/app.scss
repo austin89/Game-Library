@@ -10,6 +10,16 @@ body {
   padding-right: 10px;
 }
 
+.container-fluid{
+  position: relative;
+  z-index: 10;
+}
+
+.container {
+  position: relative;
+  z-index: 11;
+}
+
 .login-container{
 	float:right;
   color: white;

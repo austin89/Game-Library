@@ -1,44 +1,44 @@
-<h1>All Games</h1>
-<div class="row">
-  <div class="col-md-1">
-    {{#link-to (query-params limit='all' letter='') class='btn btn-default btn-lg btn-block'}}All{{/link-to}}
-  </div>
-  <div class="col-md-1">
-    {{#link-to (query-params limit='abc') class='btn btn-default btn-lg btn-block' click=(action 'clearSearch')}}Abc{{/link-to}}
-  </div>
-
-  <div class="col-md-10">
-    {{#if limitAll}}
-      <div class="form-group">
-        {{input value=filter class="form-control input-lg" placeholder="Filter by game name"}}
-      </div>
-    {{else}}
-      {{log "hereeeeeeee"}}
-        <div class="form-group">
-          {{abc-buttons}}
+<div class="container">
+    <h1>All Games</h1>
+    <div class="row">
+        <div class="col-md-1">
+            {{#link-to (query-params limit='all' letter='') class='btn btn-default btn-lg btn-block'}}All{{/link-to}}
         </div>
-    {{/if}}
-  </div>
-</div>
+        <div class="col-md-1">
+            {{#link-to (query-params limit='abc') class='btn btn-default btn-lg btn-block' click=(action 'clearSearch')}}Abc{{/link-to}}
+        </div>
 
-<br/>
+        <div class="col-md-10">
+            {{#if limitAll}}
+                <div class="form-group">
+                    {{input value=filter class="form-control input-lg" placeholder="Filter by game name"}}
+                </div>
+                {{else}}
+                    <div class="form-group">
+                        {{abc-buttons}}
+                    </div>
+            {{/if}}
+        </div>
+    </div>
 
-<div class="row">
-  {{#each filteredList as |game|}}
-    <div class="col-md-4">
-        {{#game-item game=game users=game.gameUser userModel=user}}
-        {{/game-item}}
-      </div>
-      {{else}}
-      {{#if model.isUpdating}}
-          {{spinner-cube}}
-      {{else}}
-          <div class="col-md-12 text-center">
-          <div class="alert alert-info">
-              Sorry, no result.
-          </div>
-      </div>
-    {{/if}}
-  {{/each}}
+    <br/>
+
+    <div class="row">
+        {{#each filteredList as |game|}}
+            <div class="col-md-4">
+                {{#game-item game=game users=game.gameUser userModel=user}} {{/game-item}}
+            </div>
+            {{else}} 
+                {{#if model.isUpdating}} 
+                    {{spinner-cube}} 
+                {{else}}
+                    <div class="col-md-12 text-center">
+                        <div class="alert alert-info">
+                            Sorry, no result.
+                        </div>
+                    </div>
+                {{/if}} 
+        {{/each}}
+    </div>
+    {{outlet}}
 </div>
-{{outlet}}
