@@ -11,8 +11,17 @@ body {
 }
 
 .login-container{
-	padding-top: 12px;
 	float:right;
+  color: white;
+}
+
+.login-container li{
+  list-style-type: none;
+  margin-left: 20px;
+}
+
+.navbar a:active{
+  background: red;
 }
 
 .btn-sm{

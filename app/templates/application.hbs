@@ -15,13 +15,19 @@
 
             <div class="collapse navbar-collapse" id="main-navbar">
                 <ul class="nav navbar-nav">
-                    {{#link-to 'index' tagName="li"}}<a href="">Home</a>{{/link-to}} {{#link-to 'games' tagName="li"}}<a href="">Games</a>{{/link-to}} {{#link-to 'friends' tagName="li"}}<a href="">Friends</a>{{/link-to}}
-
+                    {{#link-to 'index' tagName="li"}}<a href="">Home</a>{{/link-to}} 
+                    {{#link-to 'games' tagName="li"}}<a href="">Games</a>{{/link-to}} 
+                    {{#link-to 'friends' tagName="li"}}<a href="">Friends</a>{{/link-to}}
                 </ul>
                 <div class="login-container">
-                    <ul class=" navbar-nav">
-                        {{#unless session.isAuthenticated}} {{#link-to 'login' class="btn btn-sm" tagName="li"}}<a href="">Login</a>{{/link-to}} {{#link-to 'sign-up' class="btn btn-sm" tagName="li"}}<a href="">Sign-up</a>{{/link-to}} {{else}}
-                        <li><a class="btn btn-sm" href="" {{action "invalidateSession"}}>Logout</a></li>
+                    <ul class=" navbar-nav navbar-right">
+                        {{#unless session.isAuthenticated}} 
+                            {{#link-to 'login' class="btn btn-sm" tagName="li"}}<a href="">Login</a>{{/link-to}}
+                            {{#link-to 'sign-up' class="btn btn-sm" tagName="li"}}<a href="">Sign-up</a>{{/link-to}} 
+                        {{else}}
+                            {{#link-to 'friends.show' model class=users.id tagName="li"}}<a href="">{{model.username}}'s Profile</a>{{/link-to}}
+                            {{#link-to 'login' tagName="li" invokeAction='invalidateSession'}}<a href="">Logout</a>{{/link-to}}
+                            <!--<li><a class="btn btn-sm" href="" {{action "invalidateSession"}}>Logout</a></li>-->
                         {{/unless}}
                     </ul>
                 </div>
@@ -36,3 +42,4 @@
     {{outlet}}
     {{/sticky-element}}
 </div>
+
