@@ -25,7 +25,7 @@
                             {{#link-to 'login' class="btn btn-sm" tagName="li"}}<a href="">Login</a>{{/link-to}}
                             {{#link-to 'sign-up' class="btn btn-sm" tagName="li"}}<a href="">Sign-up</a>{{/link-to}} 
                         {{else}}
-                            {{#link-to 'friends.show' model class=users.id tagName="li"}}<a href="">{{model.username}}'s Profile</a>{{/link-to}}
+                            {{#link-to 'userProfile' model tagName="li"}}<a href="">{{model.username}}'s Profile</a>{{/link-to}}
                             {{#link-to 'login' tagName="li" invokeAction='invalidateSession'}}<a href="">Logout</a>{{/link-to}}
                             <!--<li><a class="btn btn-sm" href="" {{action "invalidateSession"}}>Logout</a></li>-->
                         {{/unless}}

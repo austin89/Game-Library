@@ -1,0 +1,45 @@
+<div class="container show-listing">
+    <h2 class="title">{{model.username}}</h2>
+
+    <h3>Games List</h3>
+    <div class="" style="padding:25px; background-color:darkgrey; border-radius:5px; overflow: hidden">
+        <div class="pre-scrollable">
+            <div class="row">
+                {{#each gameList as |game|}}
+                <div class="col-md-4">
+                    {{#game-item game=game users=game.gameUser onShow=true}} {{/game-item}}
+                </div>
+                {{else}} {{#if model.isUpdating}} {{spinner-cube}} {{else}}
+                <div class="col-md-12 text-center">
+                    <div class="alert alert-info">
+                        Sorry, no result.
+                    </div>
+                </div>
+                {{/if}} {{/each}}
+            </div>
+        </div>
+    </div>
+
+    <h3>Following</h3>
+    <div class="" style="padding:25px; background-color:darkgrey; border-radius:5px; overflow: hidden">
+        <div class="pre-scrollable">
+            <div class="row">
+                {{#each friendList as |user|}}
+
+                <div class="col-md-4">
+                    {{#user-info friend=user userRecord=userRecord onShow=true}} {{/user-info}}
+                </div>
+                {{else}} {{#if model.isUpdating}} {{spinner-cube}} {{else}}
+                <div class="col-md-12 text-center">
+                    <div class="alert alert-info">
+                        Sorry, no result.
+                    </div>
+                </div>
+                {{/if}} {{/each}}
+            </div>
+        </div>
+    </div>
+
+    {{outlet}}
+
+</div>
