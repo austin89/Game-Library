@@ -78,7 +78,7 @@ export default Controller.extend({
 			let self = this;
 			let userRecord = await this.store.findRecord('user', this.currentUser.data.uid);
 			let gameRatings = userRecord.get('ratings');
-			let thisGameRating = gameRatings.find((item) => item.gameName === game.id);
+			let thisGameRating = gameRatings.find((item) => item.gameName == game.id);
 			if(thisGameRating != null){
 
 				thisGameRating.set('value', rating);
