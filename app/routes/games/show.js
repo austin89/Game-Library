@@ -8,3 +8,4 @@ export default Route.extend({
 		return this.store.findRecord('game', params.id, {include: 'comments'});
 	}
 });
+	

@@ -6,19 +6,19 @@
                 <img src="{{model.image}}" class="cover-pic col-xs-12 col-md-8">
                 <div class="right detail-section col-xs-12 col-md-4">
                     <div class="detail owner">
-                        <strong>Genre:</strong> {{model.genre}}
+                        <strong>Genre:</strong><br> {{model.genre}}
                     </div>
                     <div class="detail">
-                        <strong>Company:</strong> {{model.company}}
+                        <strong>Company:</strong><br> {{model.company}}
                     </div>
                     <div class="detail">
-                        <strong>Platform:</strong> {{model.platform}}
+                        <strong>Platform:</strong><br> {{model.platform}}
                     </div>
                     <div class="detail">
-                        <strong>Release Date:</strong> {{model.released}}
+                        <strong>Release Date:</strong><br> {{model.released}}
                     </div>
                     <div class="detail">
-                        {{star-rating rating=model.rating readOnly=true fillColor='gold' anyPercent=true width=20 height=20}}
+                        <strong>Leave a Rating:</strong><br> {{star-rating rating=model.rating readOnly=false onClick=(action 'rateGame' model) fillColor='gold' anyPercent=true width=20 height=20}}
                     </div>
                 </div>
 

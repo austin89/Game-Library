@@ -4,6 +4,7 @@ import {hash} from 'rsvp';
 
 export default Route.extend({
 	currentUser: service(),
+	
 	model(params){
 		return hash({
 			pageUser: this.store.findRecord('user', params.id, {include: 'userGames, friend'}),

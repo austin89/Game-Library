@@ -1,5 +1,5 @@
 <!-- app/templates/index.hbs -->
-
+<div class="container">
 <!--Game cover carousel-->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
@@ -22,6 +22,12 @@
     <div class="item">
       <img src="assets/mass-effect-banner.jpg" widtht=755 height=286>
     </div>
+    {{#each model as |game|}}
+        <div class="item">
+          <img src={{game.image}} width=200 height=600>
+        </div>
+    {{/each}}
+
   </div>
 
   <!-- Left and right controls -->
@@ -74,4 +80,5 @@
 
    <br/><br/>
 
+</div>
 </div>

@@ -1,9 +1,4 @@
 @import "bootstrap";
-/*
-body {
-  padding-top: 20px;
-}
-*/
 
 .btn-narrow {
   padding-left: 10px;
@@ -30,8 +25,24 @@ body {
   margin-left: 20px;
 }
 
+
 .navbar a:active{
-  background: red;
+  background: #D18B57;
+}
+
+.collapse.navbar-collapse li a{
+  color: white;
+}
+
+.collapse.navbar-collapse li a:hover{
+  background: #D18B57;
+}
+.collapse.navbar-collapse li a:active{
+  background: #D18B57;
+}
+
+.navbar-brand {
+  color: white;
 }
 
 .btn-sm{
@@ -49,8 +60,8 @@ body {
 }
 
 .carousel{
-  color: rgb(33, 33, 33);
-  background-color: rgb(33, 33, 33);
+  color: #11689B;
+  background-color: #11689B;
 }
 
 .shadow-textarea textarea.form-control::placeholder {
@@ -82,14 +93,14 @@ body {
 
 
 /* BASIC */
-
 html {
-  background-color: #ffffff;
+  background-color: #A0B1CF;
 }
 
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
+  background-color: #A0B1CF;
 }
 
 a {

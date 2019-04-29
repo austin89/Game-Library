@@ -1,10 +1,25 @@
 import Controller from '@ember/controller';
 import { computed, set } from '@ember/object';
 import { inject as service } from '@ember/service';
+import { equal, match } from '@ember/object/computed';
 
 export default Controller.extend({
 	currentUser: service(),
 	store: service(),
+	userRating: computed('gameRatings.@each.gameName', function(){
+		// let rating = this.gameRatings.query('rating', {
+		// 	filter:{
+		// 		user: this.currentUser.data.uid
+		// 	}
+		// });
+		let rating = this.gameRatings;
+	
+		let results = rating.filter((item) => (item.get('user').match(this.currentUser.data.uid)));
+		console.log('computed rating: ');
+		console.log(results);
+		set(this, 'rating', rating);
+		return rating;
+	}),
 	actions: {
 		async addComment(game){
 			console.log('in addComment')
@@ -55,7 +70,11 @@ export default Controller.extend({
 			set(this, 'rating', rating);
 			let stars = rating;
 			console.log('in rateGame');
-			console.log('value: ' + this.model.rating);
+			console.log('game: ');
+			console.log(game);
+			//console.log('value: ' + this.gameRecord.rating);
+
+			
 			let self = this;
 			let userRecord = await this.store.findRecord('user', this.currentUser.data.uid);
 			let gameRatings = userRecord.get('ratings');
@@ -66,7 +85,6 @@ export default Controller.extend({
 				thisGameRating.save().then(function(){
 					userRecord.save();
 				});
-				
 
 
 			}else{

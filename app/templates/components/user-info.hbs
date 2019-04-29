@@ -1,4 +1,4 @@
-<div class="panel panel-default user-info">
+<div class="panel panel-default user-info" style="background-color:#B2C0DA; border-color:#B2C0DA;">
     {{#link-to "friends.show" friend class=users.id}}
     <div class="panel-heading">
         <h3 class="panel-title">{{friend.username}}</h3>
@@ -7,11 +7,14 @@
         <p>Username: {{friend.username}}</p>
     </div>
     {{/link-to}}
-    <div class="panel-footer text-right">
-        {{#unless onShow}} {{#unless checkUserFriends}}
-        <button class="btn btn-success btn-xs" {{action 'addFriend' friend}}>Follow</button>
-        {{else}}
-        <button class="btn btn-danger btn-xs" {{action 'deleteFriend' friend}}>Unfollow</button>
-        {{/unless}} {{yield}} {{/unless}}
-    </div>
+    {{#unless onShow}} 
+        <div class="panel-footer text-right" style="background-color:#B2C0DA; border-color:#B2C0DA;">
+            {{#unless checkUserFriends}}
+                <button class="btn btn-success btn-xs" {{action 'addFriend' friend}}>Follow</button>
+            {{else}}
+                <button class="btn btn-danger btn-xs" {{action 'deleteFriend' friend}}>Unfollow</button>
+            {{/unless}} 
+            {{yield}}       
+        </div>
+    {{/unless}}
 </div>

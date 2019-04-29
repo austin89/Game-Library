@@ -1,5 +1,4 @@
-
-<div class="panel panel-default game-item">
+<div class="panel panel-default game-item" style="background-color:#B2C0DA; border-color:#B2C0DA;">
 {{#link-to "games.show" game class=games.id}}
 	<div class="panel-heading">
 	<h3 class="panel-title">{{game.name}}</h3>
@@ -14,15 +13,15 @@
 		<span>{{star-rating rating=game.rating anyPercent=true readOnly=true height=13 width=13 fillColor='gold'}}</span>
 	</div>
 	{{/link-to}}
-	<div class="panel-footer text-right">
-	<!--<button class="btn btn-success btn-xs" {{action 'checkUserGamesMethod' game users}} >Check</button>-->
-	    {{#unless onShow}}
-	    {{#unless checkUserGames}}
-	    	<button type='submit' class="btn btn-success btn-xs" {{action 'addGame' game}}>Add to Favorites</button>
-        {{else}}
-            <button class="btn btn-danger btn-xs" {{action 'removeGame' game}}>Remove from Favorites</button>
-        {{/unless}}
-        {{/unless}}
-     {{yield}}
-   	</div>
+	{{#unless onShow}}
+		<div class="panel-footer text-right" style="background-color:#B2C0DA; border-color:#B2C0DA;">	    
+		    {{#unless checkUserGames}}
+		    	<button type='submit' class="btn btn-success btn-xs" {{action 'addGame' game}}>Add to Favorites</button>
+	        {{else}}
+	            <button class="btn btn-danger btn-xs" {{action 'removeGame' game}}>Remove from Favorites</button>
+	        {{/unless}}
+	        
+	     	{{yield}}
+	   	</div>
+   	{{/unless}}
 </div>

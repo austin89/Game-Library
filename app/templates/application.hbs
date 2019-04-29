@@ -1,15 +1,10 @@
+
 <div class="container-fluid">
     <img src="/assets/vgbanner.png" style="display:block; margin-left: auto; margin-right: auto;" width=100%> 
 
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar" style="background-color:#11689B; border-color:#11689B;">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 {{#link-to 'index' class="navbar-brand"}}Game Center{{/link-to}}
             </div>
 
@@ -20,14 +15,13 @@
                     {{#link-to 'friends' tagName="li"}}<a href="">Friends</a>{{/link-to}}
                 </ul>
                 <div class="login-container">
-                    <ul class=" navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right">
                         {{#unless session.isAuthenticated}} 
-                            {{#link-to 'login' class="btn btn-sm" tagName="li"}}<a href="">Login</a>{{/link-to}}
-                            {{#link-to 'sign-up' class="btn btn-sm" tagName="li"}}<a href="">Sign-up</a>{{/link-to}} 
+                            {{#link-to 'login' tagName="li"}}<a href="">Login</a>{{/link-to}}
+                            {{#link-to 'sign-up' tagName="li"}}<a href="">Sign-up</a>{{/link-to}} 
                         {{else}}
                             {{#link-to 'userProfile' model tagName="li"}}<a href="">{{model.username}}'s Profile</a>{{/link-to}}
                             {{#link-to 'login' tagName="li" invokeAction='invalidateSession'}}<a href="">Logout</a>{{/link-to}}
-                            <!--<li><a class="btn btn-sm" href="" {{action "invalidateSession"}}>Logout</a></li>-->
                         {{/unless}}
                     </ul>
                 </div>
