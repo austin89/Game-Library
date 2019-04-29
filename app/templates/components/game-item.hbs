@@ -1,4 +1,4 @@
-<div class="panel panel-default game-item" style="background-color:#B2C0DA; border-color:#B2C0DA;">
+<div class="panel panel-default game-item" >
 {{#link-to "games.show" game class=games.id}}
 	<div class="panel-heading">
 	<h3 class="panel-title">{{game.name}}</h3>
@@ -14,7 +14,7 @@
 	</div>
 	{{/link-to}}
 	{{#unless onShow}}
-		<div class="panel-footer text-right" style="background-color:#B2C0DA; border-color:#B2C0DA;">	    
+		<div class="panel-footer text-right">	    
 		    {{#unless checkUserGames}}
 		    	<button type='submit' class="btn btn-success btn-xs" {{action 'addGame' game}}>Add to Favorites</button>
 	        {{else}}

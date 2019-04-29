@@ -1,13 +1,15 @@
-
-<div class="container-fluid">
+<div id="left"></div>
+<div id="right"></div>
+<div class="container">
     <img src="/assets/vgbanner.png" style="display:block; margin-left: auto; margin-right: auto;" width=100%> 
 
-    <nav class="navbar" style="background-color:#11689B; border-color:#11689B;">
+    <nav class="navbar navbar-static-top" style="background-color:#11689B; border-color:#11689B;">
         <div class="container-fluid">
+        <!--
             <div class="navbar-header">
-                {{#link-to 'index' class="navbar-brand"}}Game Center{{/link-to}}
+                {{#link-to 'index' class="navbar-brand"}}Home{{/link-to}}
             </div>
-
+            -->
             <div class="collapse navbar-collapse" id="main-navbar">
                 <ul class="nav navbar-nav">
                     {{#link-to 'index' tagName="li"}}<a href="">Home</a>{{/link-to}} 
@@ -33,7 +35,8 @@
         <!-- /.container-fluid -->
 
     </nav>
-    {{outlet}}
+    
     
 </div>
 
+{{outlet}}

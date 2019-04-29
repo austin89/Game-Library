@@ -5,16 +5,6 @@
   padding-right: 10px;
 }
 
-.container-fluid{
-  position: relative;
-  z-index: 10;
-}
-
-.container {
-  position: relative;
-  z-index: 11;
-}
-
 .login-container{
 	float:right;
   color: white;
@@ -24,7 +14,6 @@
   list-style-type: none;
   margin-left: 20px;
 }
-
 
 .navbar a:active{
   background: #D18B57;
@@ -40,9 +29,16 @@
 .collapse.navbar-collapse li a:active{
   background: #D18B57;
 }
+.collapse.navbar-collapse li a:focus{
+  background: #D18B57;
+}
 
 .navbar-brand {
   color: white;
+}
+.navbar-brand:focus{
+  color: white;
+  background: #D18B57;
 }
 
 .btn-sm{
@@ -86,7 +82,48 @@
   white-space: nowrap;
 }
 
+#left, #right {
+  background: #11689B;//#D89E72;//#D18B57;
+  position: fixed;
+}
 
+#left, #right {
+  top: 0; 
+  bottom: 0;
+  width: 270px;
+}
+
+#left { 
+  left: 0; 
+}
+
+#right { 
+  right: 0; 
+}
+
+#oLeft, #oRight {
+  background: #A0B1CF;
+  position: fixed;
+}
+
+#oLeft, #oRight {
+  top: 0; 
+  bottom: 0;
+  width: 30px;
+}
+
+#oLeft { 
+  left: 240; 
+}
+
+#oRight { 
+  right: -240; 
+}
+
+.padding-container{
+  padding-left: 10px;
+  padding-right: 10px;
+}
 
 
 
@@ -94,13 +131,18 @@
 
 /* BASIC */
 html {
-  background-color: #A0B1CF;
+  //background-color: #A0B1CF;
+  border-left-color: #A0B1CF;
+  border-right-color: #A0B1CF;
+  border-left-width: 100px;
 }
 
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
-  background-color: #A0B1CF;
+  //background-color: #A0B1CF;
+  border-left-color: #A0B1CF;
+  border-right-color: #A0B1CF;
 }
 
 a {
@@ -413,6 +455,7 @@ input[type=text]:placeholder {
     overflow-x: scroll;
     overflow-y: hidden;
     height: 575px;
+    width: 550px;
     white-space:nowrap
 
 }

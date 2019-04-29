@@ -1,4 +1,4 @@
-<div class="panel panel-default user-info" style="background-color:#B2C0DA; border-color:#B2C0DA;">
+<div class="panel panel-default user-info">
     {{#link-to "friends.show" friend class=users.id}}
     <div class="panel-heading">
         <h3 class="panel-title">{{friend.username}}</h3>
@@ -8,7 +8,7 @@
     </div>
     {{/link-to}}
     {{#unless onShow}} 
-        <div class="panel-footer text-right" style="background-color:#B2C0DA; border-color:#B2C0DA;">
+        <div class="panel-footer text-right">
             {{#unless checkUserFriends}}
                 <button class="btn btn-success btn-xs" {{action 'addFriend' friend}}>Follow</button>
             {{else}}

@@ -1,8 +1,9 @@
 <div class="container show-listing">
     <h2 class="title">{{pageUser.username}}</h2>
+    <div class="padding-container">
 
     <h3>Games List</h3>
-    <div class="" style="padding:25px; background-color:#B2C0DA; border-radius:5px; overflow: hidden">
+    <div class="" style="padding:25px; border-radius:5px; overflow: hidden">
         <div class="pre-scrollable">
             <div class="row">
                 {{#each gameList as |game|}}
@@ -25,7 +26,7 @@
     </div>
 
     <h3>Following</h3>
-    <div class="" style="padding:25px; background-color:#B2C0DA; border-radius:0px; overflow: hidden">
+    <div class="" style="padding:25px; border-radius:5px; overflow: hidden">
         <div class="pre-scrollable">
             <div class="row">
                 {{#each friendList as |user|}}
@@ -46,6 +47,7 @@
                 {{/each}}
             </div>
         </div>
+    </div>
     </div>
 
     {{outlet}}
