@@ -20,11 +20,13 @@
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
     -->
+    <span class="text-danger">{{LoginConfirmation}}</span>
     <form {{action "authenticate" on="submit"}} >
 		{{input type="email" value=identification class="fadeIn second" placeholder="login"}}
 		{{input type="password" value=password class="fadeIn third" placeholder="password"}}
 		{{input type="submit" class="fadeIn fourth" value="Log In"}}
-	</form>
+	 </form>
+
 
   </div>
 </div>

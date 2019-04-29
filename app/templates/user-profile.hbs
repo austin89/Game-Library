@@ -2,6 +2,7 @@
 <div class="padding-container">
     <h2 class="title">{{model.username}}</h2>
 
+
     <h3>Games List</h3>
     <div class="" style="padding:25px; border-radius:5px; overflow: hidden">
         <div class="pre-scrollable">
@@ -30,13 +31,18 @@
                 <div class="col-md-4">
                     {{#user-info friend=user userRecord=userRecord onShow=true}} {{/user-info}}
                 </div>
-                {{else}} {{#if model.isUpdating}} {{spinner-cube}} {{else}}
-                <div class="col-md-12 text-center">
-                    <div class="alert alert-info">
-                        Sorry, no result.
-                    </div>
-                </div>
-                {{/if}} {{/each}}
+                {{else}} 
+                {{#if model.isUpdating}} 
+                    {{spinner-cube}}
+
+                    {{else}}
+                        <div class="col-md-12 text-center">
+                            <div class="alert alert-info">
+                                Sorry, no result.
+                            </div>
+                        </div>
+                {{/if}} 
+                {{/each}}
             </div>
         </div>
     </div>

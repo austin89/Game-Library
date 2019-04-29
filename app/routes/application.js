@@ -4,7 +4,11 @@ import { inject as service } from '@ember/service';
 
 export default Route.extend({
 	currentUser: service(),
+	session: service(),
 	model(){
-		return this.store.findRecord('user', this.currentUser.data.uid);
+		if(this.session.isAuthenticated){
+			return this.store.findRecord('user', this.currentUser.data.uid);
+		}
+		
 	}
 });

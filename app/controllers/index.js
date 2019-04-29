@@ -8,7 +8,11 @@ export default Controller.extend({
   session: service(),
   responseMessage: '',
   game: '',
-
+  filteredList: computed('model.@each.image', function(){
+    let images = this.model;
+    console.log('heyyyy');
+    return images.filter((item) => (item.image != 'http://admin.johnsons.net/janda/files/flipbook-coverpage/nocoverimg.jpg'));
+  }),
   actions: {
 
     saveInvitation() {

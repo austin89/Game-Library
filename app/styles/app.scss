@@ -53,11 +53,15 @@
 
 .carousel-inner > .item > img {
   margin: 0 auto;
+  
+  max-height: 300px;
+  
 }
 
 .carousel{
   color: #11689B;
   background-color: #11689B;
+  height: 300px;
 }
 
 .shadow-textarea textarea.form-control::placeholder {
@@ -72,9 +76,8 @@
 }
 
 .cover-pic {
-  width: 168px;
-  height: 336px;
-  object-fit: scale-down;
+  object-fit: cover;
+  align-item: center;
 }
 
 .panel{
@@ -83,7 +86,7 @@
 }
 
 #left, #right {
-  background: #11689B;//#D89E72;//#D18B57;
+  background: #11689B;
   position: fixed;
 }
 
@@ -101,30 +104,16 @@
   right: 0; 
 }
 
-#oLeft, #oRight {
-  background: #A0B1CF;
-  position: fixed;
-}
-
-#oLeft, #oRight {
-  top: 0; 
-  bottom: 0;
-  width: 30px;
-}
-
-#oLeft { 
-  left: 240; 
-}
-
-#oRight { 
-  right: -240; 
-}
-
 .padding-container{
   padding-left: 10px;
   padding-right: 10px;
 }
+/*
+.homepage-image{
+  background-size: cover;
 
+}
+*/
 
 
 

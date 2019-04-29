@@ -4,9 +4,11 @@ import { inject as service } from '@ember/service';
 export default Controller.extend({
   session: service(),
   currentUser:service(),
+  LoginConfirmation: "",
   actions: {
     async authenticate(){
-      await this.session.authenticate('authenticator:firebase', {
+    try{
+     let result = await this.session.authenticate('authenticator:firebase', {
         email: this.identification,
         password: this.password
       })
@@ -18,7 +20,10 @@ export default Controller.extend({
         // Default back to homepage
         this.transitionToRoute('index');
       }
+    }catch(e){
+      this.set("LoginConfirmation", "Incorrect Login");
       console.log(this.currentUser.data.uid);
+    }
     }
   }
 });

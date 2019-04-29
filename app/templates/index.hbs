@@ -2,29 +2,25 @@
 <div class="container">
 <!--Game cover carousel-->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
+ 
     <div class="item active">
       <img src="assets/borderlands2-banner.jpg">
     </div>
-
+ <!--
     <div class="item">
       <img src="assets/Fallout-4-banner.jpg">
     </div>
 
     <div class="item">
-      <img src="assets/mass-effect-banner.jpg" widtht=755 height=286>
+      <img src="assets/mass-effect-banner.jpg" width=755 height=286>
     </div>
-    {{#each model as |game|}}
+    -->
+    {{#each filteredList as |game|}}
         <div class="item">
-          <img src={{game.image}} width=200 height=600>
+          <img src={{game.image}} class="homepage-image" width="200px" height="600px">
         </div>
     {{/each}}
 
@@ -50,27 +46,27 @@
    <br/><br/>
 
    <div class="form-horizontal form-group form-group-lg row">
-     <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
+     <div class="col-xs-offset-1 col-xs-10">
        {{input type="text" value=game class="form-control" placeholder="Enter game name" autocomplete="off"}}
      </div>
-          <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
+     <div class="col-xs-offset-1 col-xs-10">
        {{input type="text" value=company class="form-control" placeholder="Enter game publisher" autocomplete="off"}}
      </div>
-          <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
+     <div class="col-xs-offset-1 col-xs-10">
        {{input type="text" value=genre class="form-control" placeholder="Enter game genre" autocomplete="off"}}
      </div>
-          <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
+     <div class="col-xs-offset-1 col-xs-10">
        {{input type="text" value=platform class="form-control" placeholder="Enter game platform" autocomplete="off"}}
      </div>
-      <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
+     <div class="col-xs-offset-1 col-xs-10">
        {{input type="text" value=released class="form-control" placeholder="Enter game release date" autocomplete="off"}}
      </div>
-      <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
+     <div class="col-xs-offset-1 col-xs-10">
        {{input type="text" value=image class="form-control" placeholder="Enter image URL" autocomplete="off"}}
      </div>
      <br>
-     <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-4 col-md-3">
-       <button class="btn btn-primary btn-lg btn-block" {{action 'saveInvitation'}}>Add Game</button>
+     <div class="col-xs-offset-4 col-xs-4">
+       <button style="margin-top:7px" class="btn btn-primary btn-lg btn-block" {{action 'saveInvitation'}}>Add Game</button>
      </div>
    </div>
 
