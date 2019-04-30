@@ -8,16 +8,20 @@ export default Controller.extend({
   actions: {
     async authenticate(){
     try{
-     let result = await this.session.authenticate('authenticator:firebase', {
+     await this.session.authenticate('authenticator:firebase', {
         email: this.identification,
         password: this.password
-      })
+      });
       let previousTransition = this.previousTransition;
       if (previousTransition) {
         this.set('previousTransition', null);
         previousTransition.retry();
+        console.log('if');
       } else {
         // Default back to homepage
+        this.set('identification', "");
+        this.set('password', "");
+        console.log('else');
         this.transitionToRoute('index');
       }
     }catch(e){

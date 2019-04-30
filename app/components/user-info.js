@@ -32,11 +32,15 @@ export default Component.extend({
 			console.dir(this.get('userRecord'));
 		},
 		async deleteFriend(friend){
-			let userID = await this.currentUser.data.uid;
-			let currentUser = await this.get('store').findRecord('user', userID);
-			await currentUser.get('friend').removeObject(friend);
-			await currentUser.save();
-			this.toggleProperty('checkUserFriends');
+			let confirmation = confirm("Unfollow " + friend.username + "?");
+			if(confirmation){
+				let userID = await this.currentUser.data.uid;
+				let currentUser = await this.get('store').findRecord('user', userID);
+				await currentUser.get('friend').removeObject(friend);
+				await currentUser.save();
+				this.toggleProperty('checkUserFriends');
+			}
+
 		}
 	}
 });

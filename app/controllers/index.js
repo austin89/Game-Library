@@ -8,17 +8,13 @@ export default Controller.extend({
   session: service(),
   responseMessage: '',
   game: '',
-  filteredList: computed('model.@each.image', function(){
+  filteredList: computed('model.@each.name', function(){
     let images = this.model;
-    console.log('heyyyy');
     return images.filter((item) => (item.image != 'http://admin.johnsons.net/janda/files/flipbook-coverpage/nocoverimg.jpg'));
   }),
   actions: {
 
     saveInvitation() {
-      //alert(`Saving of the following email address is in progress: ${this.get('emailAddress')}`);
-      //this.set('responseMessage', `Thank you! We've just saved your email address: ${this.get('emailAddress')}`);
-      //this.set('emailAddress', '');
       const game = this.game;
       const genre = this.genre;
       const company = this.company;
@@ -26,7 +22,14 @@ export default Controller.extend({
       const platform = this.platform;
       const image = this.image;
 
-      const newInvitation = this.store.createRecord('game', { id: game, name: game,  company: company, genre: genre, released: released, platform: platform, image: image});
+      const newInvitation = this.store.createRecord('game', { 
+        id: game, 
+        name: game,  
+        company: company, 
+        genre: genre, 
+        released: released, 
+        platform: platform, 
+        image: image});
       newInvitation.save().then(response => {
         this.set('responseMessage', `Thank you! We have just saved your game: ${this.get('game')}`);
         this.set('game', '');
