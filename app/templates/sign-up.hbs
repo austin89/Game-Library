@@ -1,6 +1,8 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- Include the above in your HEAD tag -->
+<div class="container-fluid">
+
 
 <div class="wrapper fadeInDown">
   <div id="formContent">
@@ -17,9 +19,12 @@
       {{input type="password" class="fadeIn third" name="login" placeholder="password" value=password}}
       {{input type="text" class="fadeIn third" name="login" placeholder="username" value=username}}
       {{input type="submit" class="fadeIn fourth" value="Sign up"}}
+      <br>
+      {{#link-to "login"}} Already have an account? {{/link-to}}
+      <br>
     </form>
 
 
-
+</div>
   </div>
 </div>

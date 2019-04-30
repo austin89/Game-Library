@@ -1,10 +1,9 @@
-<div id="left"></div>
-<div id="right"></div>
-<div class="container">
-    <img src="/assets/vgbanner.png" style="display:block; margin-left: auto; margin-right: auto;" width=100%> 
+{{#if session.isAuthenticated}}
+<div class="">
+    <img src="/assets/vgbanner.png" style="display:block; margin-left: auto; margin-right: auto;" width=100%>
 
     <nav class="navbar navbar-inverse navbar-static-top">
-        <div class="container-fluid">
+        <div class="container">
         <!--
             <div class="navbar-header">
                 {{#link-to 'index' class="navbar-brand"}}Home{{/link-to}}
@@ -12,15 +11,15 @@
             -->
             <div class="collapse navbar-collapse" id="main-navbar">
                 <ul class="nav navbar-nav">
-                    {{#link-to 'index' tagName="li"}}<a href="">Home</a>{{/link-to}} 
-                    {{#link-to 'games' tagName="li"}}<a href="">Games</a>{{/link-to}} 
+                    {{#link-to 'index' tagName="li"}}<a href="">Home</a>{{/link-to}}
+                    {{#link-to 'games' tagName="li"}}<a href="">Games</a>{{/link-to}}
                     {{#link-to 'friends' tagName="li"}}<a href="">Friends</a>{{/link-to}}
                 </ul>
                 <div class="login-container">
                     <ul class="nav navbar-nav navbar-right">
-                        {{#unless session.isAuthenticated}} 
+                        {{#unless session.isAuthenticated}}
                             {{#link-to 'login' tagName="li"}}<a href="">Login</a>{{/link-to}}
-                            {{#link-to 'sign-up' tagName="li"}}<a href="">Sign-up</a>{{/link-to}} 
+                            {{#link-to 'sign-up' tagName="li"}}<a href="">Sign-up</a>{{/link-to}}
                         {{else}}
                             {{#link-to 'userProfile' model tagName="li"}}<a href="">{{model.username}}'s Profile</a>{{/link-to}}
                             {{#link-to 'login' tagName="li" invokeAction='invalidateSession'}}<a href="">Logout</a>{{/link-to}}
@@ -35,8 +34,9 @@
         <!-- /.container-fluid -->
 
     </nav>
-    
-    
+
+
 </div>
+{{/if}}
 
 {{outlet}}

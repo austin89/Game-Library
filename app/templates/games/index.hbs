@@ -1,5 +1,5 @@
-<div class="container">
-<div class="padding-container">
+<div class="container-fluid">
+<div class="">
     <h1>All Games</h1>
     <div class="row">
         <div class="col-md-1">
@@ -29,16 +29,16 @@
             <div class="col-md-4">
                 {{#game-item game=game users=game.gameUser userModel=user}} {{/game-item}}
             </div>
-            {{else}} 
-                {{#if model.isUpdating}} 
-                    {{spinner-cube}} 
+            {{else}}
+                {{#if model.isUpdating}}
+                    {{spinner-cube}}
                 {{else}}
                     <div class="col-md-12 text-center">
                         <div class="alert alert-info">
                             Sorry, no result.
                         </div>
                     </div>
-                {{/if}} 
+                {{/if}}
         {{/each}}
     </div>
     {{outlet}}

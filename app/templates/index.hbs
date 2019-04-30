@@ -1,13 +1,13 @@
 <!-- app/templates/index.hbs -->
-<div class="container">
+<div class="container-fluid">
 <!--Game cover carousel-->
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div id="myCarousel" class="carousel slide col-xs-4" data-ride="carousel">
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
- 
+
     <div class="item active">
-      <img src="assets/borderlands2-banner.jpg">
+      <img src="https://www.mobygames.com/images/covers/l/283405-borderlands-2-ps-vita-front-cover.jpg">
     </div>
  <!--
     <div class="item">
@@ -20,7 +20,7 @@
     -->
     {{#each filteredList as |game|}}
         <div class="item">
-          <img src={{game.image}} class="homepage-image" width="200px" height="600px">
+          <img src={{game.image}} class="homepage-image">
         </div>
     {{/each}}
 
@@ -28,19 +28,19 @@
 
   <!-- Left and right controls -->
   <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
+    {{!-- <span class="glyphicon glyphicon-chevron-left"></span> --}}
+    {{!-- <span class="sr-only">Previous</span> --}}
   </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+  <a class="right carousel-control-next" href="#myCarousel" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
+    {{!-- <span class="sr-only">Next</span> --}}
   </a>
 </div>
 
 <br>
 <!--Add game form-->
 
-<div class="jumbotron text-center">
+<div class=" text-center col-xs-8">
    <h1>Add a Game</h1>
 
    <br/><br/>
