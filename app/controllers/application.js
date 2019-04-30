@@ -12,6 +12,7 @@ export default Controller.extend({
   actions: {
     invalidateSession() {
       this.get('session').invalidate();
+      this.get('session').sessionInvalidated();
       this.transitionToRoute('login');
     },
     async authenticate(){
@@ -33,5 +34,5 @@ export default Controller.extend({
 
 			})
   }
-	
+
 }});
