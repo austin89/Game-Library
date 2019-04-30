@@ -9,6 +9,14 @@ export default Route.extend({
 		limit: {refreshModel: true},
 		letter: {refreshModel: true}
 	},
+	beforeModel(transition){
+		// console.log(this.session.isAuthenticated);
+		if(!this.session.isAuthenticated){
+			let loginController = this.controllerFor('login');
+			loginController.set('previousTransition', transition);
+			this.transitionTo('login');
+		}
+	},
 
 	model(params) {
 		let allUsers = null;
@@ -33,15 +41,5 @@ export default Route.extend({
   	setupController(controller, model){
   		controller.set('allUsers', model.allUsers);
   		controller.set('userRecord', model.userRecord);
-  	},
-
-  	actions:{
-  		deleteFriend(user){
-  			let confirmation = confirm('Are you sure?');
-
-  			if(confirmation){
-  				user.destroyRecord();
-  			}
-  		}
   	}
 });

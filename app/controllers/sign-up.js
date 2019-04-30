@@ -36,6 +36,9 @@ export default Controller.extend({
           username: uname,
           email: e
         }).save();
+        this.set('username', "");
+        this.set('password', "");
+        this.set('email', "");
 
         this.transitionToRoute('index');
       

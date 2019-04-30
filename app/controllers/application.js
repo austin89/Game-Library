@@ -14,25 +14,6 @@ export default Controller.extend({
       this.get('session').invalidate();
       this.get('session').sessionInvalidated();
       this.transitionToRoute('login');
-    },
-    async authenticate(){
-      this.session.authenticate('authenticator:firebase', {
-        email: this.identification,
-        password: this.password
-      })
-    },
-    createProfile(){
-			const username = this.username;
-			const newUser = this.store.createRecord('user', {username: username, email: email, userID:userID});
-			newUser.save().then(response => {
-				const form = document.getElementById("loginForm");
-				const welcome = document.getElementById("welcome");
-				form.hidden = true;
-				welcome.style.color = "white";
-				welcome.innerHTML = "Welcome, " + this.username + "!";
-				welcome.hidden = false;
-
-			})
-  }
+    }
 
 }});

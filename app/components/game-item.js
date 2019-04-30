@@ -29,14 +29,18 @@ export default Component.extend({
   		},
 
   		async removeGame(game){
-  			let userID = await this.currentUser.data.uid;
-  			let userRecord = await this.get('store').findRecord('user', userID);
-  			userRecord.get('userGames').removeObject(game);
-			game.save().then(function(){
-				userRecord.save();
+  			let confirmation = confirm("Remove " + game.name + "?");
+  			if(confirmation){
+	  			let userID = await this.currentUser.data.uid;
+	  			let userRecord = await this.get('store').findRecord('user', userID);
+	  			userRecord.get('userGames').removeObject(game);
+				game.save().then(function(){
+					userRecord.save();
 
-			});
-			this.set('checkUserGames', false);
+				});
+				this.set('checkUserGames', false);
+  			}
+
   		}
 
 	}

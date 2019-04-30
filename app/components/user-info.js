@@ -8,8 +8,8 @@ export default Component.extend({
 	checkUserFriends: computed(function(){
 		let friend = this.get('friend');
 		let userRecord = this.get('userRecord');
-		console.log('user record: ' + userRecord);
-		if(userRecord.friend.find(i => i.id === friend.id) != null){ 
+		console.log('user record: ' + userRecord.friend);
+		if(userRecord.friend.find(i => i.id == friend.id) != null){ 
 			console.log('returning true')
 			return true;
 		}
@@ -23,13 +23,24 @@ export default Component.extend({
 		async addFriend(newFriend){
 
 			let self = this;
-			console.log('friend: ' + newFriend);
+			//console.log('friend: ' + newFriend);
 			let userID = await this.currentUser.data.uid;
 			let currentUser = await this.get('store').findRecord('user', userID);
 			await currentUser.get('friend').pushObject(newFriend);
 			await currentUser.save();
 			this.toggleProperty('checkUserFriends');
 			console.dir(this.get('userRecord'));
+		},
+		async deleteFriend(friend){
+			let confirmation = confirm("Unfollow " + friend.username + "?");
+			if(confirmation){
+				let userID = await this.currentUser.data.uid;
+				let currentUser = await this.get('store').findRecord('user', userID);
+				await currentUser.get('friend').removeObject(friend);
+				await currentUser.save();
+				this.toggleProperty('checkUserFriends');
+			}
+
 		}
 	}
 });
