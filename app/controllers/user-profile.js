@@ -7,16 +7,21 @@ import { inject as service } from '@ember/service';
 export default Controller.extend({
 	currentUser: service(),
 	gameList: computed('model.@each.name', function() {
+		if(this.model.id != this.currentUser.data.uid){
+			window.location.reload(true);
+		}
 		if(this.model == undefined){
 			window.location.reload(true);
 		}
-		
+
 		let results=this.model.userGames;
 		console.dir("controller pageUser: " + this.model);
       	return results.sortBy('name');
   	}),
   	friendList: computed('model.@each.name', function(){
-
+			if(this.model == undefined){
+				window.location.reload(true);
+			}
   		let results = this.model.friend;
   		results = results.filter((item) => !(item.get('id').match(this.currentUser.data.uid)));
   		return results.sortBy('name');

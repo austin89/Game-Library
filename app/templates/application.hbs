@@ -21,7 +21,7 @@
                             {{#link-to 'login' tagName="li"}}<a href="">Login</a>{{/link-to}}
                             {{#link-to 'sign-up' tagName="li"}}<a href="">Sign-up</a>{{/link-to}}
                         {{else}}
-                            <li><a href=""{{action 'fixModel'}}>View My Profile</a></li>
+                            {{#link-to 'userProfile' model invokeAction='fixModel' tagName="li"}}<a href="">View My Profile</a>{{/link-to}}
                             {{#link-to 'login' tagName="li" invokeAction='invalidateSession'}}<a href="">Logout</a>{{/link-to}}
                         {{/unless}}
                     </ul>

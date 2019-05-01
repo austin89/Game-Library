@@ -14,12 +14,16 @@ export default Route.extend(AuthenticatedRouteMixin,
 		}
 
 	},
-	afterModel(){
-		console.log("LOADING");
-		if(this.get('model') == null){
-				window.location.reload();
-			};
-			// this.transitionTo('userProfile', this.model);
-		}
+
+			actions:{
+				async fixModel(){
+					// if(this.model == null){
+					// 	window.location.reload();
+					// }
+				await this.refresh();
+				this.transitionTo('userProfile',this.model);
+				}
+
+			}
 
 });

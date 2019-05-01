@@ -15,13 +15,6 @@ export default Controller.extend({
       // await this.session.sessionStore.clear();
       window.location.reload();
       this.transitionToRoute('login');
-    },
-    async fixModel(){
-      if(this.model == null){
-        window.location.reload();
-      }
-      await this.model.reload();
-      this.transitionToRoute('userProfile', this.model);
     }
 
 }});
