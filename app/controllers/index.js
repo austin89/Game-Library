@@ -20,15 +20,19 @@ export default Controller.extend({
       const company = this.company;
       const released = this.released;
       const platform = this.platform;
-      const image = this.image;
+      if(this.image!= ''){
+        const image = this.image;
+      }else{
+        const image = "http://admin.johnsons.net/janda/files/flipbook-coverpage/nocoverimg.jpg";
+      }
 
-      const newInvitation = this.store.createRecord('game', { 
-        id: game, 
-        name: game,  
-        company: company, 
-        genre: genre, 
-        released: released, 
-        platform: platform, 
+      const newInvitation = this.store.createRecord('game', {
+        id: game,
+        name: game,
+        company: company,
+        genre: genre,
+        released: released,
+        platform: platform,
         image: image});
       newInvitation.save().then(response => {
         this.set('responseMessage', `Thank you! We have just saved your game: ${this.get('game')}`);
