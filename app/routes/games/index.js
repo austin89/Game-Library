@@ -1,10 +1,11 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Route.extend({
+export default Route.extend(AuthenticatedRouteMixin,{
    session: service(),
    currentUser:service(),
-  
+
 	queryParams:{
 		limit: {refreshModel: true},
 		letter: {refreshModel: true}
@@ -16,6 +17,7 @@ export default Route.extend({
 			loginController.set('previousTransition', transition);
 			this.transitionTo('login');
 		}
+    this._super(...arguments);
 	},
 
 	model(params) {
@@ -25,7 +27,7 @@ export default Route.extend({
 		}
 
 		return this.store.query('game', {
-			
+
 	      orderBy: 'name',
 	      startAt: params.letter,
 	      endAt: params.letter+"\uf8ff"

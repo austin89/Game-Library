@@ -108,9 +108,13 @@ width: 100%;
   object-fit: cover;
   align-item: center;
 }
+.readable{
+  background-color: rgb(255,255,255,.8);
+  padding: 10px;
+}
 
 .panel{
-  overflow: hidden;
+  overflow: auto;
   // background-color:rgb(217, 217, 217, .9);
   white-space:nowrap;
 
@@ -168,9 +172,7 @@ width: 100%;
 
 
 
-h1, h2, h3{
-  background: rgba(255,255,255,.5);
-}
+
 /* BASIC */
 html {
   //background-color: #A0B1CF;

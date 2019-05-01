@@ -10,10 +10,18 @@ export default Controller.extend({
   session: service(),
   //currentUser: service('current-user'),
   actions: {
-    invalidateSession() {
-      this.get('session').invalidate();
-      this.get('session').sessionInvalidated();
+    async invalidateSession() {
+      this.session.invalidate();
+      // await this.session.sessionStore.clear();
+      window.location.reload();
       this.transitionToRoute('login');
+    },
+    async fixModel(){
+      if(this.model == null){
+        window.location.reload();
+      }
+      await this.model.reload();
+      this.transitionToRoute('userProfile', this.model);
     }
 
 }});

@@ -16,6 +16,7 @@ export default Route.extend({
 			loginController.set('previousTransition', transition);
 			this.transitionTo('login');
 		}
+		this._super(...arguments);
 	},
 
 	model(params) {
@@ -25,7 +26,7 @@ export default Route.extend({
 		}else{
 
 			allUsers = this.store.query('user', {
-				
+
 		      orderBy: 'username',
 		      startAt: params.letter,
 		      endAt: params.letter+"\uf8ff"
