@@ -14,7 +14,6 @@ export default Controller.extend({
 	limitAll: equal('limit', 'all'),
 
 	filteredList: computed('model.@each.username', 'filter', function() {
-		console.dir(this.session);
 		let results=this.allUsers;
 		const query = this.filter;
 		results = results.filter((item) => !(item.get('id').match(this.currentUser.data.uid)));
@@ -29,12 +28,8 @@ export default Controller.extend({
 	      results = results.filter((item) => item.get('username').match(regex));
 
 	    }
-	    console.log("results:");
-	    console.dir(results.length);
-	    console.log('filter: ' + this.filter);
 	    return results.sortBy('username');
-	}),
-	
+	}),	
 	actions: {
   	clearSearch(){
   		this.set('filter', '');

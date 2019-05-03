@@ -20,18 +20,14 @@ export default Controller.extend({
         const regexString = '(' + query.split(' ').join(')+.*(') + ')+.*';
         // i: case insensitive, g: global
         const regex = new RegExp(regexString, 'ig');
-        console.log(regex);
 
         results = results.filter((item) => item.get('id').match(regex));
       }
       return results.sortBy('name');
   }),
-
   actions: {
   	clearSearch(){
   		this.set('filter', '');
   	}
-
   }
-
 });

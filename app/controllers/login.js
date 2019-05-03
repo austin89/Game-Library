@@ -16,17 +16,14 @@ export default Controller.extend({
       if (previousTransition) {
         this.set('previousTransition', null);
         previousTransition.retry();
-        console.log('if');
       } else {
         // Default back to homepage
         this.set('identification', "");
         this.set('password', "");
-        console.log('else');
         this.transitionToRoute('index');
       }
     }catch(e){
       this.set("LoginConfirmation", "Incorrect Login");
-      console.log(this.currentUser.data.uid);
     }
     }
   }

@@ -5,9 +5,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Route.extend(AuthenticatedRouteMixin,{
 	session: service(),
-	// filteredList: {},
 	beforeModel(transition){
-		// console.log(this.session.isAuthenticated);
 		if(!this.session.isAuthenticated){
 			let loginController = this.controllerFor('login');
 			loginController.set('previousTransition', transition);
@@ -19,18 +17,8 @@ export default Route.extend(AuthenticatedRouteMixin,{
 		if(this.session.isAuthenticated){
 			return this.store.findAll('game');
 		}
-			else{
-				  window.location.reload();
-			}
-
+		else{
+			  window.location.reload();
+		}
 	}
-
-	// afterModel(){
-
-	// 	let images = this.model;
-
-	// 	let c = images.filter((item) => (item.image != 'http://admin.johnsons.net/janda/files/flipbook-coverpage/nocoverimg.jpg'));
-	// 	this.set('filteredList', c)
-
-	// }
 });

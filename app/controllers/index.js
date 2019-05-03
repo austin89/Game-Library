@@ -1,4 +1,3 @@
-// app/controllers/index.js
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
 import { match, not, equal } from '@ember/object/computed';

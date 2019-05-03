@@ -3,7 +3,6 @@ import { computed } from '@ember/object';
 import { equal, match } from '@ember/object/computed';
 import { inject as service } from '@ember/service';
 
-
 export default Controller.extend({
 	currentUser: service(),
 	gameList: computed('model.@each.name', function() {
@@ -15,7 +14,6 @@ export default Controller.extend({
 		}
 
 		let results=this.model.userGames;
-		console.dir("controller pageUser: " + this.model);
       	return results.sortBy('name');
   	}),
   	friendList: computed('model.@each.name', function(){
