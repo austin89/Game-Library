@@ -11,7 +11,6 @@ export default Route.extend(AuthenticatedRouteMixin,{
 		letter: {refreshModel: true}
 	},
 	beforeModel(transition){
-		// console.log(this.session.isAuthenticated);
 		if(!this.session.isAuthenticated){
 			let loginController = this.controllerFor('login');
 			loginController.set('previousTransition', transition);

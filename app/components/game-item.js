@@ -36,12 +36,9 @@ export default Component.extend({
 	  			userRecord.get('userGames').removeObject(game);
 				game.save().then(function(){
 					userRecord.save();
-
 				});
 				this.set('checkUserGames', false);
   			}
-
   		}
-
 	}
 });

@@ -9,5 +9,4 @@ export default Component.extend({
 		let userID = this.currentUser.data.uid;
 		return userID;
 	})
-
 });

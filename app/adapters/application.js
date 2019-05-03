@@ -3,6 +3,5 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
 import ENV from '../config/environment';
 
 export default FirestoreAdapter.extend({
-
   authenticator: 'authenticator:firebase'
 });
